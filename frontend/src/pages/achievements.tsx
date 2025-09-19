@@ -79,7 +79,7 @@ export default function Achievements() {
             />
           </div>
           
-          <div className="relative z-10 bg-gradient-to-r from-purple-500 to-pink-600 text-white p-8">
+          <div className="relative z-10 bg-gradient-to-r from-purple-500 to-pink-600 text-gray-900 p-8">
             <div className="text-center">
               <h1 className="text-4xl font-bold mb-2">🏆 Achievement Gallery</h1>
               <p className="text-purple-100 text-lg">Showcase your habit mastery with NFT badges</p>
@@ -130,7 +130,7 @@ export default function Achievements() {
                 
                 {/* Earned Status */}
                 {badge.earned && (
-                  <div className="absolute top-2 right-2 bg-green-500 text-white text-xs px-2 py-1 rounded-full">
+                  <div className="absolute top-2 right-2 bg-green-500 text-gray-900 text-xs px-2 py-1 rounded-full">
                     ✓ Earned
                   </div>
                 )}
@@ -173,15 +173,6 @@ export default function Achievements() {
           ))}
         </div>
 
-        {/* Navigation */}
-        <div className="flex justify-center space-x-4">
-          <a href="/dashboard" className="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition-colors">
-            ← Back to Dashboard
-          </a>
-          <a href="/room" className="bg-orange-500 text-white px-6 py-3 rounded-lg hover:bg-orange-600 transition-colors">
-            Virtual Room →
-          </a>
-        </div>
         </div>
       </MobileLayout>
     </>

@@ -148,7 +148,7 @@
 
 ;; Get current date (simplified as block height divided by average blocks per day)
 (define-read-only (get-current-date)
-  (/ block-height u144) ;; Assuming ~144 blocks per day (10 min blocks)
+  (/ stacks-block-height u144) ;; Assuming ~144 blocks per day (10 min blocks)
 )
 
 ;; Task management functions
@@ -182,7 +182,7 @@
           category: category,
           difficulty: difficulty,
           is-active: true,
-          created-at: block-height,
+          created-at: stacks-block-height,
           total-completions: u0
         }
       )
@@ -219,8 +219,8 @@
           current-streak: u0,
           longest-streak: u0,
           level: u1,
-          joined-at: block-height,
-          last-activity: block-height
+          joined-at: stacks-block-height,
+          last-activity: stacks-block-height
         }
         (map-get? user-profiles tx-sender)
       ))
@@ -237,7 +237,7 @@
       (map-set user-task-completions
         { user: tx-sender, task-id: task-id, date: current-date }
         {
-          completed-at: block-height,
+          completed-at: stacks-block-height,
           reward-earned: reward-amount,
           streak-bonus: u0 ;; Streak bonus will be calculated by streak-system contract
         }
@@ -254,7 +254,7 @@
         (merge user-profile {
           total-tasks-completed: (+ (get total-tasks-completed user-profile) u1),
           total-rewards-earned: (+ (get total-rewards-earned user-profile) reward-amount),
-          last-activity: block-height
+          last-activity: stacks-block-height
         })
       )
       
@@ -277,7 +277,8 @@
       (var-set total-tasks-completed (+ (var-get total-tasks-completed) u1))
       
       ;; Mint ACHIV tokens as reward
-      (try! (contract-call? (var-get achiv-token-contract) mint-reward reward-amount tx-sender))
+      ;; TODO: Re-enable after contract deployment
+      ;; (try! (contract-call? (var-get achiv-token-contract) mint-reward reward-amount tx-sender))
       
       ;; Log completion event
       (print {
@@ -286,7 +287,7 @@
         task-id: task-id,
         reward-earned: reward-amount,
         date: current-date,
-        block-height: block-height
+        block-height: stacks-block-height
       })
       
       (ok reward-amount)

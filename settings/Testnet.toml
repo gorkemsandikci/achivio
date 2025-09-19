@@ -1,0 +1,23 @@
+[network]
+name = "testnet"
+deployment_fee_rate = 10
+# Testnet node configuration
+node_rpc_address = "https://api.testnet.hiro.so"
+# Optional: use local testnet node
+# node_rpc_address = "http://localhost:20443"
+
+[accounts.deployer]
+mnemonic = "twice kind fence tip hidden tilt action fragile skin nothing glory cousin green tomorrow spring wrist shed math olympic multiply hip blue scout claw"
+balance = 100_000_000_000_000
+# secret_key: 753b7cc01a1a2e86221266a154af739463fce51219d97e4f856cd7200c3bd2a601
+# stx_address: STC9JV90Q6FVYTBWSH4NEKM1AEZDV0TGXE81HMAV (Testnet address)
+# btc_address: tb1qa5zj43fwc0tyhrhhjxkk8z4760tr6s0fkv2z42 (Testnet BTC address)
+
+# Additional test accounts for testing
+[accounts.wallet_1]
+mnemonic = "sell invite acquire kitten bamboo drastic jelly vivid peace spawn twice guilt pave pen trash pretty park cube fragile unaware remain midnight betray rebuild"
+balance = 100_000_000_000_000
+
+[accounts.wallet_2]
+mnemonic = "hold excess usual excess ring elephant install account glad dry fragile donkey gaze humble truck breeze nation gasp vacuum limb head keep delay hospital"
+balance = 100_000_000_000_000

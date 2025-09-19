@@ -151,8 +151,8 @@ export default function Tasks() {
         <div className="px-4 pt-4">
           {/* Header */}
           <div className="mb-6">
-            <h1 className="text-3xl font-bold text-white mb-2">Daily Quests 🎯</h1>
-            <p className="text-white/80">Complete tasks to earn ACHIV tokens and XP</p>
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">Daily Quests 🎯</h1>
+            <p className="text-gray-600">Complete tasks to earn ACHIV tokens and XP</p>
           </div>
 
           {/* Category Filter */}
@@ -164,8 +164,8 @@ export default function Tasks() {
                   onClick={() => setSelectedCategory(category.id)}
                   className={`flex items-center space-x-2 px-4 py-2 rounded-2xl whitespace-nowrap transition-all duration-300 ${
                     selectedCategory === category.id
-                      ? `bg-gradient-to-r ${category.color} text-white shadow-lg scale-105`
-                      : 'bg-white/10 text-white/70 hover:bg-white/20'
+                      ? `bg-gradient-to-r ${category.color} text-gray-900 shadow-lg scale-105`
+                      : 'bg-white/10 text-gray-600 hover:bg-white/20'
                   }`}
                 >
                   <span className="text-lg">{category.icon}</span>
@@ -201,7 +201,7 @@ export default function Tasks() {
                       
                       {/* Streak Badge */}
                       {task.streak > 0 && !isCompleted && (
-                        <div className="absolute -top-2 -right-2 bg-orange-500 text-white text-xs px-2 py-1 rounded-full font-bold">
+                        <div className="absolute -top-2 -right-2 bg-orange-500 text-gray-900 text-xs px-2 py-1 rounded-full font-bold">
                           {task.streak}🔥
                         </div>
                       )}
@@ -210,7 +210,7 @@ export default function Tasks() {
                     {/* Task Details */}
                     <div className="flex-1">
                       <div className="flex items-center justify-between mb-2">
-                        <h3 className={`text-lg font-bold ${isCompleted ? 'text-white/60 line-through' : 'text-white'}`}>
+                        <h3 className={`text-lg font-bold ${isCompleted ? 'text-gray-500 line-through' : 'text-gray-900'}`}>
                           {task.title}
                         </h3>
                         {!isCompleted && (
@@ -222,24 +222,24 @@ export default function Tasks() {
                         )}
                       </div>
                       
-                      <p className={`text-sm mb-3 ${isCompleted ? 'text-white/50' : 'text-white/80'}`}>
+                      <p className={`text-sm mb-3 ${isCompleted ? 'text-gray-400' : 'text-gray-600'}`}>
                         {task.description}
                       </p>
                       
                       {/* Task Meta Info */}
                       <div className="flex items-center justify-between">
                         <div className="flex items-center space-x-4 text-sm">
-                          <span className={`${isCompleted ? 'text-white/50' : 'text-white/70'}`}>
+                          <span className={`${isCompleted ? 'text-gray-400' : 'text-gray-600'}`}>
                             ⏱️ {task.timeEstimate}
                           </span>
                         </div>
                         
                         <div className="flex items-center space-x-3">
-                          <div className={`flex items-center space-x-1 ${isCompleted ? 'text-white/50' : 'text-yellow-400'}`}>
+                          <div className={`flex items-center space-x-1 ${isCompleted ? 'text-gray-400' : 'text-yellow-400'}`}>
                             <span className="text-sm font-bold">+{task.xp}</span>
                             <span className="text-xs">XP</span>
                           </div>
-                          <div className={`flex items-center space-x-1 ${isCompleted ? 'text-white/50' : 'text-green-400'}`}>
+                          <div className={`flex items-center space-x-1 ${isCompleted ? 'text-gray-400' : 'text-green-400'}`}>
                             <span className="text-sm font-bold">+{task.reward}</span>
                             <span className="text-xs">ACHIV</span>
                           </div>
@@ -268,7 +268,7 @@ export default function Tasks() {
 
           {/* Add New Task Button */}
           <div className="mt-8 pb-6">
-            <button className="w-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-4 rounded-2xl font-bold text-lg hover:from-indigo-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105">
+            <button className="w-full bg-gradient-to-r from-indigo-500 to-purple-600 text-gray-900 py-4 rounded-2xl font-bold text-lg hover:from-indigo-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105">
               ➕ Create Custom Task
             </button>
           </div>

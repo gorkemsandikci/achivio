@@ -253,9 +253,9 @@
           image-uri: image-uri,
           achievement-data: {
             milestone: milestone,
-            earned-at: block-height,
+            earned-at: stacks-block-height,
             category: category,
-            special-attributes: ""
+            special-attributes: "none                                                                                                                                                                                                        "
           },
           rarity: rarity
         }

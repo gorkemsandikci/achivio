@@ -41,14 +41,12 @@ const MobileLayout: React.FC<MobileLayoutProps> = ({ children }) => {
     setTimeout(() => setIsTransitioning(false), 300);
   };
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 relative overflow-hidden">
-      {/* Animated Background Particles */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-yellow-400 rounded-full opacity-10 animate-pulse"></div>
-        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-green-400 rounded-full opacity-10 animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-blue-400 rounded-full opacity-5 animate-spin duration-[20s]"></div>
-      </div>
+      return (
+        <div className="min-h-screen bg-gray-50 relative overflow-hidden">
+          {/* Subtle Background Pattern */}
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-white to-gray-100 opacity-50"></div>
+          </div>
 
       {/* Main Content Area */}
       <div className={`pb-24 transition-all duration-300 ${isTransitioning ? 'opacity-50 scale-95' : 'opacity-100 scale-100'}`}>
@@ -57,42 +55,38 @@ const MobileLayout: React.FC<MobileLayoutProps> = ({ children }) => {
 
       {/* Bottom Navigation */}
       <div className="fixed bottom-0 left-0 right-0 z-50">
-        {/* Glassmorphism Background */}
-        <div className="bg-white/10 backdrop-blur-xl border-t border-white/20">
+        {/* Active Tab Indicator - Outside navigation */}
+        <div 
+          className="absolute -top-1 h-1 bg-blue-500 rounded-full transition-all duration-700 ease-out z-10"
+          style={{
+            left: `${(navItems.findIndex(item => item.id === activeTab) * 20)}%`,
+            width: '20%'
+          }}
+        />
+        
+        {/* Clean Background */}
+        <div className="bg-white border-t border-gray-200 shadow-lg">
           <div className="px-2 py-3">
             <div className="flex justify-around items-center relative">
-              {/* Active Tab Indicator */}
-              <div 
-                className="absolute top-0 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full transition-all duration-300 ease-out"
-                style={{
-                  left: `${(navItems.findIndex(item => item.id === activeTab) * 20)}%`,
-                  width: '20%'
-                }}
-              />
               
-              {navItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => handleTabChange(item.id)}
-                  className={`flex flex-col items-center py-2 px-3 rounded-2xl transition-all duration-300 transform ${
-                    activeTab === item.id
-                      ? 'scale-110 bg-white/20 text-white shadow-lg'
-                      : 'scale-100 text-white/70 hover:text-white hover:scale-105'
-                  }`}
-                >
-                  <div className={`text-2xl mb-1 ${activeTab === item.id ? 'animate-bounce' : ''}`}>
-                    {item.icon}
-                  </div>
-                  <span className={`text-xs font-semibold ${activeTab === item.id ? 'text-white' : 'text-white/80'}`}>
-                    {item.label}
-                  </span>
-                  
-                  {/* Active Glow Effect */}
-                  {activeTab === item.id && (
-                    <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/20 to-orange-500/20 rounded-2xl blur-sm -z-10"></div>
-                  )}
-                </button>
-              ))}
+                  {navItems.map((item) => (
+                    <button
+                      key={item.id}
+                      onClick={() => handleTabChange(item.id)}
+                      className={`flex flex-col items-center py-2 px-3 rounded-2xl transition-all duration-700 transform ${
+                        activeTab === item.id
+                          ? 'scale-105 bg-blue-50 text-blue-600 shadow-sm'
+                          : 'scale-100 text-gray-500 hover:text-gray-700 hover:scale-105'
+                      }`}
+                    >
+                      <div className={`text-2xl mb-1 transition-all duration-500 ${activeTab === item.id ? 'animate-bounce' : ''}`}>
+                        {item.icon}
+                      </div>
+                      <span className={`text-xs font-medium ${activeTab === item.id ? 'text-blue-600' : 'text-gray-500'}`}>
+                        {item.label}
+                      </span>
+                    </button>
+                  ))}
             </div>
           </div>
         </div>
@@ -100,7 +94,7 @@ const MobileLayout: React.FC<MobileLayoutProps> = ({ children }) => {
 
       {/* Floating Action Button for Quick Task Add */}
       <div className="fixed bottom-28 right-6 z-40">
-        <button className="w-16 h-16 bg-gradient-to-r from-green-400 to-blue-500 rounded-full shadow-2xl flex items-center justify-center text-white text-2xl transform hover:scale-110 transition-all duration-300 animate-pulse">
+        <button className="w-14 h-14 bg-blue-500 rounded-full shadow-lg flex items-center justify-center text-white text-xl transform hover:scale-105 transition-all duration-300 hover:bg-blue-600">
           ➕
         </button>
       </div>

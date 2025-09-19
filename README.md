@@ -54,14 +54,14 @@ Achivio is a comprehensive habit tracking application built on the Stacks blockc
 
 Achivio consists of 6 interconnected smart contracts:
 
-| Contract | Purpose | Key Functions |
-|----------|---------|---------------|
-| **achiv-token** | SIP-010 fungible token for rewards | `mint-reward`, `transfer`, `burn` |
-| **task-tracker** | Core habit tracking and completion | `create-task`, `complete-task` |
-| **streak-system** | Consecutive day bonuses and milestones | `update-user-streak`, `claim-streak-bonus` |
-| **nft-badges** | SIP-009 NFT badges for achievements | `mint-streak-badge`, `mint-task-master-badge` |
-| **room-items** | SIP-009 NFT virtual furniture/items | `purchase-item`, `place-item-in-room` |
-| **leaderboard** | User rankings and social features | `update-user-stats`, `compare-users` |
+| Contract | Status | Purpose | Key Functions |
+|----------|--------|---------|---------------|
+| **achiv-token** | ✅ **LIVE** | SIP-010 fungible token for rewards | `mint-reward`, `transfer`, `burn` |
+| **task-tracker** | 🔧 Development | Core habit tracking and completion | `create-task`, `complete-task` |
+| **streak-system** | 🔧 Development | Consecutive day bonuses and milestones | `update-user-streak`, `claim-streak-bonus` |
+| **nft-badges** | 🔧 Development | SIP-009 NFT badges for achievements | `mint-streak-badge`, `mint-task-master-badge` |
+| **room-items** | 🔧 Development | SIP-009 NFT virtual furniture/items | `purchase-item`, `place-item-in-room` |
+| **leaderboard** | 🔧 Development | User rankings and social features | `update-user-stats`, `compare-users` |
 
 ## 📱 User Interface
 
@@ -88,12 +88,27 @@ Achivio consists of 6 interconnected smart contracts:
 
 ## 🚀 Quick Start
 
+### 🎯 **Live Deployment** 
+
+**🔗 Deployed Contract:** [ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM.achiv-token](https://explorer.hiro.so/txid/ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM.achiv-token?chain=testnet)
+
+**🌐 Network:** Stacks Testnet  
+**📱 Frontend:** `http://localhost:3000` (local development)
+
 ### Smart Contracts
 
 ```bash
 git clone https://github.com/gorkemsandikci/achivio.git
 cd achivio
 npm install
+
+# Install Clarinet for contract development
+brew install clarinet
+
+# Check contracts
+clarinet check
+
+# Run tests
 npm test
 ```
 
@@ -103,24 +118,25 @@ npm test
 cd frontend
 npm install
 npm run dev
+# Open http://localhost:3000
 ```
 
 ### Environment Setup
 
 ```bash
-# Create .env file
-STACKS_PRIVATE_KEY=your_testnet_private_key_here
-STACKS_MAINNET_PRIVATE_KEY=your_mainnet_private_key_here
+# Create .env file in frontend/
+NEXT_PUBLIC_STACKS_NETWORK=testnet
+NEXT_PUBLIC_CONTRACT_ADDRESS=ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM
 ```
 
 ### Deployment
 
 ```bash
 # Deploy contracts to testnet
-npm run deploy:testnet
+clarinet deployments apply --testnet
 
 # Deploy contracts to mainnet (⚠️ costs real STX)
-npm run deploy:mainnet
+clarinet deployments apply --mainnet
 
 # Deploy frontend
 cd frontend && npm run build

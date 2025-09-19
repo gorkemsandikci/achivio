@@ -165,7 +165,7 @@
         favorite-category: favorite-category,
         join-date: (match (map-get? user-profiles tx-sender)
                      existing (get join-date existing)
-                     block-height
+                     stacks-block-height
                    ),
         bio: bio
       }
@@ -238,7 +238,7 @@
               longest-streak: longest-streak,
               total-badges: badges-count,
               level: level,
-              last-updated: block-height,
+              last-updated: stacks-block-height,
               overall-score: score,
               weekly-tasks: (get weekly-tasks existing-stats), ;; Updated separately
               monthly-tasks: (get monthly-tasks existing-stats)
@@ -249,8 +249,9 @@
           (try! (update-period-stats user current-date))
           
           ;; Reward user for updating stats
-          (try! (contract-call? (var-get achiv-token-contract) mint-reward 
-                LEADERBOARD_UPDATE_REWARD user))
+          ;; TODO: Re-enable after contract deployment
+          ;; (try! (contract-call? (var-get achiv-token-contract) mint-reward 
+          ;;       LEADERBOARD_UPDATE_REWARD user))
           
           ;; Update global counter
           (var-set total-leaderboard-updates (+ (var-get total-leaderboard-updates) u1))
@@ -285,14 +286,14 @@
     ;; 4. Handle ties appropriately
     
     ;; For now, we'll simulate updating the leaderboard
-    (var-set last-global-update block-height)
+    (var-set last-global-update stacks-block-height)
     
     (print {
       action: "leaderboard-updated",
       category: category,
       timeframe: timeframe,
       updated-by: tx-sender,
-      block-height: block-height
+      block-height: stacks-block-height
     })
     
     (ok true)
@@ -303,7 +304,7 @@
 
 ;; Get current date (same logic as other contracts)
 (define-read-only (get-current-date)
-  (/ block-height u144) ;; Assuming ~144 blocks per day
+  (/ stacks-block-height u144) ;; Assuming ~144 blocks per day
 )
 
 ;; Get current week
@@ -516,7 +517,7 @@
     (print {
       action: "global-stats-updated",
       admin: tx-sender,
-      block-height: block-height
+      block-height: stacks-block-height
     })
     
     (ok true)

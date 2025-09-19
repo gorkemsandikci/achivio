@@ -31,13 +31,13 @@ export default function Home() {
         <HeroSection />
         
         {/* Features Section */}
-        <section className="py-20 bg-white/10 backdrop-blur-xl">
+        <section className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-white mb-4">
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">
                 Why Choose Achivio?
               </h2>
-              <p className="text-xl text-white/80 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 The world's first blockchain-powered habit tracker that rewards your consistency 
                 with real digital assets and customizable virtual experiences.
               </p>
@@ -45,7 +45,7 @@ export default function Home() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {/* Feature 1 */}
-              <div className="text-center p-6 rounded-xl bg-white/10 backdrop-blur-xl border border-white/20 hover:shadow-lg transition-all duration-300">
+              <div className="text-center p-6 rounded-xl bg-gray-50 border border-gray-100 hover:shadow-lg transition-all duration-300">
                 <div className="w-20 h-20 mx-auto mb-6 relative">
                   <Image
                     src="/assets/images/3d_rendered_crypto_tokens.jpg"
@@ -54,15 +54,15 @@ export default function Home() {
                     className="rounded-full object-cover"
                   />
                 </div>
-                <h3 className="text-xl font-bold mb-3 text-white">Earn Real Rewards</h3>
-                <p className="text-white/70">
+                <h3 className="text-xl font-bold mb-3 text-gray-900">Earn Real Rewards</h3>
+                <p className="text-gray-600">
                   Complete daily habits and earn ACHIV tokens that have real blockchain value. 
                   Your consistency pays off with tangible digital assets.
                 </p>
               </div>
 
               {/* Feature 2 */}
-              <div className="text-center p-6 rounded-xl bg-white/10 backdrop-blur-xl border border-white/20 hover:shadow-lg transition-all duration-300">
+              <div className="text-center p-6 rounded-xl bg-gray-50 border border-gray-100 hover:shadow-lg transition-all duration-300">
                 <div className="w-20 h-20 mx-auto mb-6 relative">
                   <Image
                     src="/assets/images/achievement-badges.jpg"
@@ -71,15 +71,15 @@ export default function Home() {
                     className="rounded-full object-cover"
                   />
                 </div>
-                <h3 className="text-xl font-bold mb-3 text-white">Collect NFT Badges</h3>
-                <p className="text-white/70">
+                <h3 className="text-xl font-bold mb-3 text-gray-900">Collect NFT Badges</h3>
+                <p className="text-gray-900/70">
                   Unlock unique NFT achievement badges for reaching milestones. 
                   Show off your dedication with rare, collectible digital trophies.
                 </p>
               </div>
 
               {/* Feature 3 */}
-              <div className="text-center p-6 rounded-xl bg-white/10 backdrop-blur-xl border border-white/20 hover:shadow-lg transition-all duration-300">
+              <div className="text-center p-6 rounded-xl bg-gray-50 border border-gray-100 hover:shadow-lg transition-all duration-300">
                 <div className="w-20 h-20 mx-auto mb-6 relative">
                   <Image
                     src="/assets/images/virtual_room_preview_1.jpg"
@@ -88,8 +88,8 @@ export default function Home() {
                     className="rounded-lg object-cover"
                   />
                 </div>
-                <h3 className="text-xl font-bold mb-3 text-white">Customize Your Space</h3>
-                <p className="text-white/70">
+                <h3 className="text-xl font-bold mb-3 text-gray-900">Customize Your Space</h3>
+                <p className="text-gray-900/70">
                   Use earned tokens to buy virtual furniture and decorate your 3D workspace. 
                   Create a motivating environment that reflects your achievements.
                 </p>
@@ -101,7 +101,7 @@ export default function Home() {
         {/* CTA Section */}
         <section className="py-20 bg-gradient-to-r from-green-500 to-blue-600">
           <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-            <h2 className="text-4xl font-bold text-white mb-6">
+            <h2 className="text-4xl font-bold text-gray-900 mb-6">
               Ready to Transform Your Habits?
             </h2>
             <p className="text-xl text-green-100 mb-8">
@@ -111,7 +111,7 @@ export default function Home() {
               <a href="/wallet" className="bg-white text-green-600 font-bold py-4 px-8 rounded-full text-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 text-center">
                 🔗 Connect Testnet Wallet
               </a>
-              <a href="/dashboard" className="border-2 border-white text-white font-bold py-4 px-8 rounded-full text-lg hover:bg-white hover:text-green-600 transition-all duration-300 text-center">
+              <a href="/dashboard" className="border-2 border-gray-300 text-gray-700 font-bold py-4 px-8 rounded-full text-lg hover:bg-white hover:text-green-600 transition-all duration-300 text-center">
                 📊 View Dashboard
               </a>
             </div>
@@ -122,16 +122,14 @@ export default function Home() {
         <footer className="bg-gray-900 text-white py-12">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
-              <div className="flex items-center justify-center mb-4">
-                <div className="w-8 h-8 relative mr-3">
-                  <Image
-                    src="/assets/images/3d_rendered_crypto_tokens.jpg"
-                    alt="Achivio"
-                    fill
-                    className="rounded-full object-cover"
-                  />
-                </div>
-                <h3 className="text-2xl font-bold">Achivio</h3>
+              <div className="flex justify-center mb-4">
+                <Image
+                  src="/assets/images/logo-achivio.png"
+                  alt="Achivio Logo"
+                  width={150}
+                  height={150}
+                  className="object-contain"
+                />
               </div>
               <p className="text-gray-400 mb-6">
                 Blockchain-powered habit tracking with real rewards

@@ -115,8 +115,8 @@ export default function Rewards() {
         <div className="px-4 pt-4">
           {/* Header */}
           <div className="mb-6">
-            <h1 className="text-3xl font-bold text-white mb-2">Rewards 💎</h1>
-            <p className="text-white/80">Your earned tokens and achievement badges</p>
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">Rewards 💎</h1>
+            <p className="text-gray-600">Your earned tokens and achievement badges</p>
           </div>
 
           {/* Tab Selector */}
@@ -126,7 +126,7 @@ export default function Rewards() {
               className={`flex-1 py-3 px-4 rounded-xl font-semibold transition-all duration-300 ${
                 selectedTab === 'tokens'
                   ? 'bg-white text-purple-600 shadow-lg'
-                  : 'text-white/70'
+                  : 'text-gray-600'
               }`}
             >
               💰 Tokens
@@ -136,7 +136,7 @@ export default function Rewards() {
               className={`flex-1 py-3 px-4 rounded-xl font-semibold transition-all duration-300 ${
                 selectedTab === 'badges'
                   ? 'bg-white text-purple-600 shadow-lg'
-                  : 'text-white/70'
+                  : 'text-gray-600'
               }`}
             >
               🏆 NFT Badges
@@ -153,9 +153,9 @@ export default function Rewards() {
                 <div className="relative z-10">
                   <div className="flex items-center justify-between mb-4">
                     <div>
-                      <p className="text-white/80 text-sm">Total Balance</p>
-                      <h2 className="text-4xl font-bold text-white">{tokenStats.balance}</h2>
-                      <p className="text-white/90">ACHIV Tokens</p>
+                      <p className="text-gray-600 text-sm">Total Balance</p>
+                      <h2 className="text-4xl font-bold text-gray-900">{tokenStats.balance}</h2>
+                      <p className="text-gray-900/90">ACHIV Tokens</p>
                     </div>
                     <div className="w-16 h-16 relative">
                       <Image
@@ -169,16 +169,16 @@ export default function Rewards() {
                   
                   <div className="grid grid-cols-3 gap-4 mt-6">
                     <div className="text-center">
-                      <div className="text-white text-lg font-bold">+{tokenStats.todayEarned}</div>
-                      <div className="text-white/70 text-xs">Today</div>
+                      <div className="text-gray-900 text-lg font-bold">+{tokenStats.todayEarned}</div>
+                      <div className="text-gray-600 text-xs">Today</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-white text-lg font-bold">+{tokenStats.weeklyEarned}</div>
-                      <div className="text-white/70 text-xs">This Week</div>
+                      <div className="text-gray-900 text-lg font-bold">+{tokenStats.weeklyEarned}</div>
+                      <div className="text-gray-600 text-xs">This Week</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-white text-lg font-bold">{tokenStats.totalEarned}</div>
-                      <div className="text-white/70 text-xs">All Time</div>
+                      <div className="text-gray-900 text-lg font-bold">{tokenStats.totalEarned}</div>
+                      <div className="text-gray-600 text-xs">All Time</div>
                     </div>
                   </div>
                 </div>
@@ -186,7 +186,7 @@ export default function Rewards() {
 
               {/* Recent Transactions */}
               <div className="bg-white/10 backdrop-blur-xl rounded-3xl p-6 border border-white/20">
-                <h3 className="text-xl font-bold text-white mb-4">Recent Activity</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">Recent Activity</h3>
                 
                 <div className="space-y-3">
                   {recentTransactions.map((tx, index) => (
@@ -198,8 +198,8 @@ export default function Rewards() {
                           {tx.type === 'earned' ? '↗️' : '↙️'}
                         </div>
                         <div>
-                          <div className="text-white font-medium">{tx.task}</div>
-                          <div className="text-white/60 text-sm">{tx.time}</div>
+                          <div className="text-gray-900 font-medium">{tx.task}</div>
+                          <div className="text-gray-900/60 text-sm">{tx.time}</div>
                         </div>
                       </div>
                       <div className={`font-bold ${tx.type === 'earned' ? 'text-green-400' : 'text-red-400'}`}>
@@ -238,24 +238,24 @@ export default function Rewards() {
                       </div>
                       
                       {/* Rarity Badge */}
-                      <div className={`absolute top-2 left-2 px-2 py-1 rounded-full text-xs font-bold bg-gradient-to-r ${badge.color} text-white`}>
+                      <div className={`absolute top-2 left-2 px-2 py-1 rounded-full text-xs font-bold bg-gradient-to-r ${badge.color} text-gray-900`}>
                         {badge.rarity}
                       </div>
                       
                       {/* Earned Status */}
                       {badge.earned && (
-                        <div className="absolute top-2 right-2 bg-green-500 text-white text-xs px-2 py-1 rounded-full font-bold">
+                        <div className="absolute top-2 right-2 bg-green-500 text-gray-900 text-xs px-2 py-1 rounded-full font-bold">
                           ✓
                         </div>
                       )}
                     </div>
                     
-                    <h3 className="text-white font-bold text-sm mb-1">{badge.name}</h3>
-                    <p className="text-white/70 text-xs mb-2">{badge.description}</p>
+                    <h3 className="text-gray-900 font-bold text-sm mb-1">{badge.name}</h3>
+                    <p className="text-gray-600 text-xs mb-2">{badge.description}</p>
                     
                     {!badge.earned && badge.progress !== undefined && (
                       <div>
-                        <div className="flex justify-between text-xs text-white/60 mb-1">
+                        <div className="flex justify-between text-xs text-gray-900/60 mb-1">
                           <span>Progress</span>
                           <span>{badge.progress}/{badge.maxProgress}</span>
                         </div>
@@ -276,7 +276,7 @@ export default function Rewards() {
                           mintNFTBadge(badge.id);
                         }}
                         disabled={mintingBadge === badge.id.toString()}
-                        className="w-full mt-3 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xs font-bold rounded-xl hover:from-purple-600 hover:to-pink-600 transition-all duration-300 disabled:opacity-50"
+                        className="w-full mt-3 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-gray-900 text-xs font-bold rounded-xl hover:from-purple-600 hover:to-pink-600 transition-all duration-300 disabled:opacity-50"
                       >
                         {mintingBadge === badge.id.toString() ? '🔄 Minting...' : '🎨 Mint NFT'}
                       </button>
@@ -287,24 +287,24 @@ export default function Rewards() {
 
               {/* Collection Stats */}
               <div className="bg-white/10 backdrop-blur-xl rounded-3xl p-6 border border-white/20">
-                <h3 className="text-xl font-bold text-white mb-4">Collection Stats</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">Collection Stats</h3>
                 
                 <div className="grid grid-cols-4 gap-4 text-center">
                   <div>
                     <div className="text-2xl font-bold text-gray-400">{badges.filter(b => b.earned && b.rarity === 'Common').length}</div>
-                    <div className="text-xs text-white/60">Common</div>
+                    <div className="text-xs text-gray-900/60">Common</div>
                   </div>
                   <div>
                     <div className="text-2xl font-bold text-blue-400">{badges.filter(b => b.earned && b.rarity === 'Rare').length}</div>
-                    <div className="text-xs text-white/60">Rare</div>
+                    <div className="text-xs text-gray-900/60">Rare</div>
                   </div>
                   <div>
                     <div className="text-2xl font-bold text-purple-400">{badges.filter(b => b.earned && b.rarity === 'Epic').length}</div>
-                    <div className="text-xs text-white/60">Epic</div>
+                    <div className="text-xs text-gray-900/60">Epic</div>
                   </div>
                   <div>
                     <div className="text-2xl font-bold text-yellow-400">{badges.filter(b => b.earned && b.rarity === 'Legendary').length}</div>
-                    <div className="text-xs text-white/60">Legendary</div>
+                    <div className="text-xs text-gray-900/60">Legendary</div>
                   </div>
                 </div>
               </div>
@@ -324,18 +324,18 @@ export default function Rewards() {
                       className="object-cover"
                     />
                   </div>
-                  <div className={`absolute top-3 left-3 px-3 py-1 rounded-full text-sm font-bold bg-gradient-to-r ${selectedBadge.color} text-white`}>
+                  <div className={`absolute top-3 left-3 px-3 py-1 rounded-full text-sm font-bold bg-gradient-to-r ${selectedBadge.color} text-gray-900`}>
                     {selectedBadge.rarity}
                   </div>
                 </div>
                 
-                <h2 className="text-2xl font-bold text-white mb-2">{selectedBadge.name}</h2>
-                <p className="text-white/80 mb-4">{selectedBadge.description}</p>
+                <h2 className="text-2xl font-bold text-gray-900 mb-2">{selectedBadge.name}</h2>
+                <p className="text-gray-600 mb-4">{selectedBadge.description}</p>
                 
                 {selectedBadge.earned ? (
                   <div className="mb-4">
                     <div className="text-green-400 font-semibold mb-2">🎉 Earned on {selectedBadge.earnedDate}</div>
-                    <div className="text-white/70 text-sm">
+                    <div className="text-gray-600 text-sm">
                       <strong>Unlocks:</strong>
                       <ul className="list-disc list-inside mt-1">
                         {selectedBadge.unlocks.map((unlock: string, index: number) => (
@@ -349,7 +349,7 @@ export default function Rewards() {
                     <div className="text-yellow-400 font-semibold mb-2">🎯 In Progress</div>
                     {selectedBadge.progress !== undefined && (
                       <div>
-                        <div className="flex justify-between text-sm text-white/70 mb-2">
+                        <div className="flex justify-between text-sm text-gray-600 mb-2">
                           <span>Progress: {selectedBadge.progress}/{selectedBadge.maxProgress}</span>
                           <span>{Math.round((selectedBadge.progress / selectedBadge.maxProgress) * 100)}%</span>
                         </div>
@@ -366,7 +366,7 @@ export default function Rewards() {
                 
                 <button 
                   onClick={() => setSelectedBadge(null)}
-                  className="w-full bg-gradient-to-r from-purple-500 to-indigo-600 text-white font-bold py-3 rounded-2xl hover:from-purple-600 hover:to-indigo-700 transition-all duration-300"
+                  className="w-full bg-gradient-to-r from-purple-500 to-indigo-600 text-gray-900 font-bold py-3 rounded-2xl hover:from-purple-600 hover:to-indigo-700 transition-all duration-300"
                 >
                   Close
                 </button>

@@ -35,8 +35,8 @@ export default function Wallet() {
         <div className="px-4 pt-4">
           {/* Header */}
           <div className="mb-6">
-            <h1 className="text-3xl font-bold text-white mb-2">Profile 👤</h1>
-            <p className="text-white/80">Manage your account and wallet connection</p>
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">Profile 👤</h1>
+            <p className="text-gray-600">Manage your account and wallet connection</p>
           </div>
 
           {/* Profile Card */}
@@ -55,15 +55,15 @@ export default function Wallet() {
                   />
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold text-white">Habit Master</h2>
-                  <p className="text-white/80">Level {userStats.level} Achiever</p>
-                  <p className="text-white/60 text-sm">Joined {userStats.joinDate}</p>
+                  <h2 className="text-2xl font-bold text-gray-900">Habit Master</h2>
+                  <p className="text-gray-600">Level {userStats.level} Achiever</p>
+                  <p className="text-gray-500 text-sm">Joined {userStats.joinDate}</p>
                 </div>
               </div>
               
               {/* XP Progress */}
               <div className="mb-4">
-                <div className="flex justify-between text-white/90 text-sm mb-2">
+                <div className="flex justify-between text-gray-700 text-sm mb-2">
                   <span>Experience</span>
                   <span>{userStats.xp} / {userStats.nextLevelXp} XP</span>
                 </div>
@@ -82,46 +82,46 @@ export default function Wallet() {
             <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-4 border border-white/20">
               <div className="text-center">
                 <div className="text-3xl mb-2">🔥</div>
-                <div className="text-2xl font-bold text-white">{userStats.streak}</div>
-                <div className="text-white/70 text-sm">Day Streak</div>
+                <div className="text-2xl font-bold text-gray-900">{userStats.streak}</div>
+                <div className="text-gray-600 text-sm">Day Streak</div>
               </div>
             </div>
             
             <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-4 border border-white/20">
               <div className="text-center">
                 <div className="text-3xl mb-2">✅</div>
-                <div className="text-2xl font-bold text-white">{userStats.totalTasks}</div>
-                <div className="text-white/70 text-sm">Tasks Done</div>
+                <div className="text-2xl font-bold text-gray-900">{userStats.totalTasks}</div>
+                <div className="text-gray-600 text-sm">Tasks Done</div>
               </div>
             </div>
             
             <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-4 border border-white/20">
               <div className="text-center">
                 <div className="text-3xl mb-2">🏆</div>
-                <div className="text-2xl font-bold text-white">{userStats.badges}</div>
-                <div className="text-white/70 text-sm">NFT Badges</div>
+                <div className="text-2xl font-bold text-gray-900">{userStats.badges}</div>
+                <div className="text-gray-600 text-sm">NFT Badges</div>
               </div>
             </div>
             
             <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-4 border border-white/20">
               <div className="text-center">
                 <div className="text-3xl mb-2">⭐</div>
-                <div className="text-2xl font-bold text-white">{userStats.level}</div>
-                <div className="text-white/70 text-sm">Level</div>
+                <div className="text-2xl font-bold text-gray-900">{userStats.level}</div>
+                <div className="text-gray-600 text-sm">Level</div>
               </div>
             </div>
           </div>
 
           {/* Wallet Connection */}
           <div className="bg-white/10 backdrop-blur-xl rounded-3xl p-6 mb-6 border border-white/20">
-            <h3 className="text-xl font-bold text-white mb-4">🔗 Wallet Connection</h3>
+            <h3 className="text-xl font-bold text-gray-900 mb-4">🔗 Wallet Connection</h3>
             
             {isConnected ? (
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <div>
-                    <div className="text-white font-medium">Connected</div>
-                    <div className="text-white/60 text-sm font-mono">
+                    <div className="text-gray-900 font-medium">Connected</div>
+                    <div className="text-gray-500 text-sm font-mono">
                       {stxAddress ? `${stxAddress.slice(0, 8)}...${stxAddress.slice(-4)}` : 'Loading...'}
                     </div>
                   </div>
@@ -131,11 +131,11 @@ export default function Wallet() {
                 <div className="grid grid-cols-2 gap-4 mb-4">
                   <div className="bg-white/5 rounded-2xl p-4 text-center">
                     <div className="text-lg font-bold text-green-400">24.5</div>
-                    <div className="text-white/60 text-sm">ACHIV Tokens</div>
+                    <div className="text-gray-500 text-sm">ACHIV Tokens</div>
                   </div>
                   <div className="bg-white/5 rounded-2xl p-4 text-center">
                     <div className="text-lg font-bold text-purple-400">4</div>
-                    <div className="text-white/60 text-sm">NFT Badges</div>
+                    <div className="text-gray-500 text-sm">NFT Badges</div>
                   </div>
                 </div>
                 
@@ -148,17 +148,17 @@ export default function Wallet() {
               </div>
             ) : (
               <div>
-                <p className="text-white/70 mb-4">Connect your Stacks wallet to earn and manage your ACHIV tokens and NFT badges.</p>
+                <p className="text-gray-600 mb-4">Connect your Stacks wallet to earn and manage your ACHIV tokens and NFT badges.</p>
                 
                 <div className="space-y-3">
                   <button 
                     onClick={connectWallet}
-                    className="w-full bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold py-4 rounded-2xl hover:from-orange-600 hover:to-red-600 transition-all duration-300 transform hover:scale-105"
+                    className="w-full bg-gradient-to-r from-orange-500 to-red-500 text-gray-900 font-bold py-4 rounded-2xl hover:from-orange-600 hover:to-red-600 transition-all duration-300 transform hover:scale-105"
                   >
                     🔗 Connect to Stacks Testnet
                   </button>
                   
-                  <p className="text-center text-white/50 text-sm">
+                  <p className="text-center text-gray-400 text-sm">
                     Connect your Hiro Wallet, Xverse, or other Stacks wallet to testnet
                   </p>
                   
@@ -167,7 +167,7 @@ export default function Wallet() {
                       <span className="text-blue-400">ℹ️</span>
                       <span className="text-blue-400 font-semibold">Testnet Connection</span>
                     </div>
-                    <p className="text-white/70 text-sm">
+                    <p className="text-gray-600 text-sm">
                       This app connects to Stacks Testnet. After connecting, you'll be redirected to the dashboard to start earning ACHIV tokens and NFT badges.
                     </p>
                   </div>
@@ -178,7 +178,7 @@ export default function Wallet() {
 
           {/* Achievement Preview */}
           <div className="bg-white/10 backdrop-blur-xl rounded-3xl p-6 mb-6 border border-white/20">
-            <h3 className="text-xl font-bold text-white mb-4">🏆 Recent Achievements</h3>
+            <h3 className="text-xl font-bold text-gray-900 mb-4">🏆 Recent Achievements</h3>
             
             <div className="grid grid-cols-4 gap-3">
               {achievements.map((achievement, index) => (
@@ -205,27 +205,27 @@ export default function Wallet() {
 
           {/* Settings */}
           <div className="bg-white/10 backdrop-blur-xl rounded-3xl p-6 border border-white/20">
-            <h3 className="text-xl font-bold text-white mb-4">⚙️ Settings</h3>
+            <h3 className="text-xl font-bold text-gray-900 mb-4">⚙️ Settings</h3>
             
             <div className="space-y-3">
-              <button className="w-full flex items-center justify-between p-4 bg-white/5 rounded-2xl text-white hover:bg-white/10 transition-all duration-300">
+              <button className="w-full flex items-center justify-between p-4 bg-white/5 rounded-2xl text-gray-900 hover:bg-white/10 transition-all duration-300">
                 <span>🔔 Notifications</span>
-                <span className="text-white/60">→</span>
+                <span className="text-gray-500">→</span>
               </button>
               
-              <button className="w-full flex items-center justify-between p-4 bg-white/5 rounded-2xl text-white hover:bg-white/10 transition-all duration-300">
+              <button className="w-full flex items-center justify-between p-4 bg-white/5 rounded-2xl text-gray-900 hover:bg-white/10 transition-all duration-300">
                 <span>🎨 Theme</span>
-                <span className="text-white/60">→</span>
+                <span className="text-gray-500">→</span>
               </button>
               
-              <button className="w-full flex items-center justify-between p-4 bg-white/5 rounded-2xl text-white hover:bg-white/10 transition-all duration-300">
+              <button className="w-full flex items-center justify-between p-4 bg-white/5 rounded-2xl text-gray-900 hover:bg-white/10 transition-all duration-300">
                 <span>📊 Export Data</span>
-                <span className="text-white/60">→</span>
+                <span className="text-gray-500">→</span>
               </button>
               
-              <button className="w-full flex items-center justify-between p-4 bg-white/5 rounded-2xl text-white hover:bg-white/10 transition-all duration-300">
+              <button className="w-full flex items-center justify-between p-4 bg-white/5 rounded-2xl text-gray-900 hover:bg-white/10 transition-all duration-300">
                 <span>❓ Help & Support</span>
-                <span className="text-white/60">→</span>
+                <span className="text-gray-500">→</span>
               </button>
             </div>
           </div>

@@ -105,8 +105,8 @@ export default function VirtualRoom() {
         <div className="mb-8">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
             <div>
-              <h1 className="text-4xl font-bold text-white mb-2">🏠 Virtual Room</h1>
-              <p className="text-white/80">Customize your workspace with earned furniture and decorations</p>
+              <h1 className="text-4xl font-bold text-gray-900 mb-2">🏠 Virtual Room</h1>
+              <p className="text-gray-600">Customize your workspace with earned furniture and decorations</p>
             </div>
             
             <div className="mt-4 md:mt-0 flex items-center space-x-4">
@@ -157,7 +157,7 @@ export default function VirtualRoom() {
 
         {/* Current Room Display with Interactive Items */}
         <div className="mb-8">
-          <h2 className="text-2xl font-semibold text-white mb-4">Your 3D Room</h2>
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Your 3D Room</h2>
           <div className="bg-white/10 backdrop-blur-xl rounded-2xl shadow-xl overflow-hidden border border-white/20">
             <div className="relative h-96">
               <Image
@@ -180,7 +180,7 @@ export default function VirtualRoom() {
                      item.item.includes('Trophy') ? '🏆' : 
                      item.item.includes('Wall') ? '🎯' : '💎'}
                   </div>
-                  <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-black/80 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                  <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-black/80 text-gray-900 text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
                     {item.item} (Click to remove)
                   </div>
                 </div>
@@ -200,7 +200,7 @@ export default function VirtualRoom() {
               </div>
               
               {/* Room Info */}
-              <div className="absolute bottom-4 left-4 bg-black/50 backdrop-blur-sm text-white p-4 rounded-lg">
+              <div className="absolute bottom-4 left-4 bg-black/50 backdrop-blur-sm text-gray-900 p-4 rounded-lg">
                 <h3 className="font-bold text-lg">{roomPreviews[selectedRoom - 1].name}</h3>
                 <p className="text-sm opacity-80">{roomPreviews[selectedRoom - 1].description}</p>
                 <div className="mt-2 flex space-x-2">
@@ -214,7 +214,7 @@ export default function VirtualRoom() {
 
         {/* NFT Items Inventory */}
         <div className="mb-8">
-          <h2 className="text-2xl font-semibold text-white mb-4">🎒 Your NFT Items</h2>
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">🎒 Your NFT Items</h2>
           <div className="grid grid-cols-2 gap-4">
             {nftItems.map((item) => (
               <div
@@ -241,8 +241,8 @@ export default function VirtualRoom() {
                   </div>
                 </div>
                 
-                <h3 className="text-white font-bold text-sm mb-1">{item.name}</h3>
-                <p className="text-white/60 text-xs mb-3">{item.description}</p>
+                <h3 className="text-gray-900 font-bold text-sm mb-1">{item.name}</h3>
+                <p className="text-gray-500 text-xs mb-3">{item.description}</p>
                 
                 {item.unlocked && (
                   <button
@@ -251,7 +251,7 @@ export default function VirtualRoom() {
                     className={`w-full py-2 rounded-xl text-xs font-bold transition-all duration-300 ${
                       item.placed
                         ? 'bg-green-500/20 text-green-400 border border-green-400/30'
-                        : 'bg-gradient-to-r from-blue-500 to-purple-500 text-white hover:from-blue-600 hover:to-purple-600'
+                        : 'bg-gradient-to-r from-blue-500 to-purple-500 text-gray-900 hover:from-blue-600 hover:to-purple-600'
                     }`}
                   >
                     {item.placed ? '✅ Placed' : '📍 Place in Room'}
@@ -259,7 +259,7 @@ export default function VirtualRoom() {
                 )}
                 
                 {!item.unlocked && (
-                  <div className="w-full py-2 text-center text-white/40 text-xs">
+                  <div className="w-full py-2 text-center text-gray-400 text-xs">
                     🔒 Earn badge to unlock
                   </div>
                 )}
@@ -268,15 +268,6 @@ export default function VirtualRoom() {
           </div>
         </div>
 
-        {/* Navigation */}
-        <div className="flex justify-center space-x-4">
-          <a href="/achievements" className="bg-purple-500 text-white px-6 py-3 rounded-lg hover:bg-purple-600 transition-colors">
-            ← Back to Achievements
-          </a>
-          <a href="/dashboard" className="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition-colors">
-            Dashboard →
-          </a>
-        </div>
         </div>
       </MobileLayout>
     </>
