@@ -1,28 +1,188 @@
-# Fungible token
+# Achivio - Blockchain Habit Tracker 🎯
 
-Fungible tokens are digital assets that can be sent, received, combined, and divided.
+![Achivio Hero](assets/images/main_hero.jpg)
 
-This contract implements a basic fungible token that conforms to the SIP-010 FT standard. Be sure to change the placeholder name of the collection, as well as any other variables or references to your new project.
+> **Motivational habit tracking meets blockchain rewards and NFT achievements**
 
-## SIP-010 Standard Trait Definition for Fungible Tokens
+Achivio is a comprehensive habit tracking application built on the Stacks blockchain that gamifies healthy habits through token rewards, streak bonuses, NFT achievement badges, and customizable 3D virtual rooms.
 
-In [Stacks Improvement Proposal 010 (SIP-010)](https://github.com/stacksgov/sips/blob/main/sips/sip-010/sip-010-fungible-token-standard.md), the Stacks community proposed and approved a standard set of functions that every fungible token contract is to implement to qualify as a compliant fungible token on the Stacks chain. This creates uniformity and predictability in contract interactions, as well as enables a handful of built-in Clarity functions accessible only to SIP-010 contracts (such as `ft-transfer?`, etc.).
+## 🎨 Visual Showcase
 
-Those functions are specified in the SIP and must be implemented in each contract. Trait conformance is then asserted with an `impl-trait` declaration at the top of the contract pointing to the relevant trait reference published on the Stacks mainnet.
+<div align="center">
 
-You can see this [`sip-010-trait` reference in the Hiro Stacks Explorer](https://explorer.stacks.co/txid/SP3FBR2AGK5H9QBDH3EEN6DF8EK8JY7RX8QJ5SVTE.sip-010-trait-ft-standard?chain=mainnet).
+### 💎 ACHIV Tokens
+![ACHIV Tokens](assets/images/3d_rendered_crypto_tokens.jpg)
 
-## Test your contract
+### 🏆 Achievement System
+![Achievement Badges](assets/images/achievement-badges.jpg)
 
-You can manually test your contract in the [Clarinet](https://docs.hiro.so/stacks/clarinet) console. After entering the console with `clarinet console` you can make contract function calls like
-`(contract-call? .ft mint u100)`
-`(contract-call? .ft get-balance tx-sender)`
+### 🔥 Streak Rewards
+![Streak Counter](assets/images/animated_fire_streak_counter.jpg)
 
-You can programmatically test your contracts with [unit tests](https://docs.hiro.so/clarinet/how-to-guides/how-to-test-contract). See the `tests/` folder where you will find unit tests that ensures the `mint` function returns the proper response and that the read-only functions work as expected.
+### 🏠 Virtual Room Customization
+<table>
+  <tr>
+    <td><img src="assets/images/virtual_room_preview_1.jpg" alt="Modern Room" width="200"/></td>
+    <td><img src="assets/images/virtual_room_preview_2.jpg" alt="Cozy Room" width="200"/></td>
+    <td><img src="assets/images/virtual_room_preview_3.jpg" alt="Gaming Room" width="200"/></td>
+  </tr>
+  <tr>
+    <td align="center"><em>Modern Workspace</em></td>
+    <td align="center"><em>Cozy Study</em></td>
+    <td align="center"><em>Gaming Setup</em></td>
+  </tr>
+</table>
 
-## Resources and Inspiration
+### 📊 Dashboard & Analytics
+![Dashboard](assets/images/dashboard_mockup.jpg)
 
-- There are lots of ways to create an initial distribution of tokens
-  - [Friedger's SLIME token employs an airdrop model](https://github.com/boomcrypto/clarity-deployed-contracts/blob/main/contracts/SP125J1ADVYWGWB9NQRCVGKYAG73R17ZNMV17XEJ7/slime.clar)
-  - The [xBTC protocol deploys a role-based scheme](https://explorer.stacks.co/txid/0xcf6a930ac1bc14416df691e14a8da0d674748714933a56eb13e2e958029c64fa?chain=mainnet) to manage token minting access
-  - This [project permits fungible token minting](https://explorer.stacks.co/txid/0x5c9cec6d28627bd73db277297d1a239f758fca087c9e3259b721686abd4801b3?chain=mainnet) only to those who own an NFT
+### 🏅 Leaderboard Competition
+![Leaderboard](assets/images/leaderboard_interface.jpg)
+
+</div>
+
+## 🌟 Features
+
+- **Daily Habit Tracking** - Create and complete custom daily tasks
+- **ACHIV Token Rewards** - Earn fungible tokens for completing habits
+- **Streak System** - Bonus rewards for consecutive day completions
+- **NFT Achievement Badges** - Collectible badges for milestones
+- **3D Virtual Rooms** - Customize your workspace with earned items
+- **Social Leaderboards** - Compete and compare with other users
+
+## 🏗️ Architecture
+
+Achivio consists of 6 interconnected smart contracts:
+
+| Contract | Purpose | Key Functions |
+|----------|---------|---------------|
+| **achiv-token** | SIP-010 fungible token for rewards | `mint-reward`, `transfer`, `burn` |
+| **task-tracker** | Core habit tracking and completion | `create-task`, `complete-task` |
+| **streak-system** | Consecutive day bonuses and milestones | `update-user-streak`, `claim-streak-bonus` |
+| **nft-badges** | SIP-009 NFT badges for achievements | `mint-streak-badge`, `mint-task-master-badge` |
+| **room-items** | SIP-009 NFT virtual furniture/items | `purchase-item`, `place-item-in-room` |
+| **leaderboard** | User rankings and social features | `update-user-stats`, `compare-users` |
+
+## 📱 User Interface
+
+### Mobile App Screenshots
+![App Store Screenshots](assets/images/app_store_screenshots.jpg)
+
+### Progress Tracking & Analytics
+![Progress Charts](assets/images/progress_charts.jpg)
+
+### Achievement Celebrations
+<table>
+  <tr>
+    <td><img src="assets/images/achievement_unlock_animation.jpg" alt="Achievement Animation" width="250"/></td>
+    <td><img src="assets/images/milestone_celebration.jpg" alt="Milestone Celebration" width="250"/></td>
+    <td><img src="assets/images/success_illustration.jpg" alt="Success" width="250"/></td>
+  </tr>
+</table>
+
+### Social Sharing
+![Social Sharing Card](assets/images/social_sharing_card.jpg)
+
+### Marketing Materials
+![Promotional Banner](assets/images/promotional_banner.jpg)
+
+## 🚀 Quick Start
+
+### Smart Contracts
+
+```bash
+git clone https://github.com/gorkemsandikci/achivio.git
+cd achivio
+npm install
+npm test
+```
+
+### Frontend Application
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+### Environment Setup
+
+```bash
+# Create .env file
+STACKS_PRIVATE_KEY=your_testnet_private_key_here
+STACKS_MAINNET_PRIVATE_KEY=your_mainnet_private_key_here
+```
+
+### Deployment
+
+```bash
+# Deploy contracts to testnet
+npm run deploy:testnet
+
+# Deploy contracts to mainnet (⚠️ costs real STX)
+npm run deploy:mainnet
+
+# Deploy frontend
+cd frontend && npm run build
+```
+
+## 📖 User Journey
+
+1. **Create Habits** - Set up daily tasks with custom rewards
+2. **Complete Tasks** - Earn ACHIV tokens for consistency
+3. **Build Streaks** - Get bonus rewards for consecutive days
+4. **Earn Badges** - Unlock NFT achievements for milestones
+5. **Customize Room** - Buy virtual furniture with earned tokens
+6. **Compete Socially** - Climb leaderboards and compare progress
+
+## 🧪 Testing
+
+```bash
+npm test                    # Run all tests
+npm test achiv-token.test.ts # Run specific tests
+npm run test:coverage       # Run with coverage
+```
+
+## 📊 Tokenomics
+
+- **70% User Rewards** - Daily task completion
+- **15% Streak Bonuses** - Consecutive achievements  
+- **10% Development** - Platform growth
+- **5% Reserve** - Emergency fund
+
+**Deflationary Mechanics**: Tokens burned through room item purchases
+
+## 🔒 Security Features
+
+- Daily completion limits prevent fraud
+- Authorized minter controls
+- Emergency pause mechanisms
+- Comprehensive access controls
+
+## 📚 Documentation
+
+- [Contract Guide](docs/CONTRACT_GUIDE.md)
+- [Deployment Guide](docs/DEPLOYMENT.md)
+- [Security Audit](docs/SECURITY.md)
+- [API Reference](docs/API.md)
+
+## 🤝 Contributing
+
+1. Fork and clone the repository
+2. Create a feature branch
+3. Write tests for new functionality
+4. Submit a pull request
+
+## 📄 License
+
+MIT License - see [LICENSE](LICENSE) file for details.
+
+## 📞 Support
+
+- Documentation: [docs.achivio.app](https://docs.achivio.app)
+- Discord: [discord.gg/achivio](https://discord.gg/achivio)
+- Email: support@achivio.app
+
+---
+
+**Built with ❤️ on Stacks blockchain**

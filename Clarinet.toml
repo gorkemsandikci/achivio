@@ -1,15 +1,40 @@
 [project]
-name = 'fungible-token'
-description = 'Demonstrates a basic fungible token that conforms to the SIP-010 FT standard'
-authors = []
+name = 'achivio'
+description = 'Achivio - Motivational Habit Tracker with Blockchain Rewards and NFT Badges'
+authors = ['Achivio Team']
 telemetry = true
 cache_dir = './.cache'
 
 [[project.requirements]]
 contract_id = 'SP3FBR2AGK5H9QBDH3EEN6DF8EK8JY7RX8QJ5SVTE.sip-010-trait-ft-standard'
 
-[contracts.fungible-token]
-path = 'contracts/fungible-token.clar'
+[contracts.achiv-token]
+path = 'contracts/achiv-token.clar'
+clarity_version = 3
+epoch = 3.0
+
+[contracts.task-tracker]
+path = 'contracts/task-tracker.clar'
+clarity_version = 3
+epoch = 3.0
+
+[contracts.streak-system]
+path = 'contracts/streak-system.clar'
+clarity_version = 3
+epoch = 3.0
+
+[contracts.nft-badges]
+path = 'contracts/nft-badges.clar'
+clarity_version = 3
+epoch = 3.0
+
+[contracts.room-items]
+path = 'contracts/room-items.clar'
+clarity_version = 3
+epoch = 3.0
+
+[contracts.leaderboard]
+path = 'contracts/leaderboard.clar'
 clarity_version = 3
 epoch = 3.0
 

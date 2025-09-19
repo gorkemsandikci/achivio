@@ -1,22 +1,60 @@
 {
-  "name": "fungible-token",
-  "version": "2.0.0",
-  "description": "fungible token smart contract example",
+  "name": "achivio",
+  "version": "1.0.0",
+  "description": "Achivio - Motivational Habit Tracker with Blockchain Rewards and NFT Badges",
   "type": "module",
   "scripts": {
     "test": "vitest run -- --manifest-path ./Clarinet.toml",
-    "test:reports": "vitest run -- --coverage --costs",
-    "test:watch": "chokidar \"unit-tests/**/*.ts\" \"contracts/**/*.clar\" -c \"npm t\""
+    "test:watch": "vitest -- --manifest-path ./Clarinet.toml --watch",
+    "test:coverage": "vitest run -- --coverage --costs --manifest-path ./Clarinet.toml",
+    "test:integration": "vitest run integration.test.ts -- --manifest-path ./Clarinet.toml",
+    "lint": "clarinet check",
+    "deploy:testnet": "ts-node scripts/deploy-testnet.ts",
+    "deploy:mainnet": "ts-node scripts/deploy-mainnet.ts",
+    "build": "clarinet build",
+    "check": "clarinet check",
+    "console": "clarinet console",
+    "docs:serve": "python -m http.server 8000 -d docs",
+    "clean": "rm -rf .cache coverage"
   },
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "stacks",
+    "blockchain",
+    "habit-tracker",
+    "nft",
+    "defi",
+    "clarity",
+    "smart-contracts",
+    "gamification",
+    "rewards",
+    "achievements"
+  ],
+  "author": "Achivio Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/achivio/achivio-contracts.git"
+  },
+  "bugs": {
+    "url": "https://github.com/achivio/achivio-contracts/issues"
+  },
+  "homepage": "https://achivio.app",
   "dependencies": {
     "@hirosystems/clarinet-sdk": "^3.0.1",
     "@stacks/transactions": "^7.0.6",
+    "@stacks/network": "^7.0.6",
     "@types/node": "^22.15.17",
     "chokidar-cli": "^3.0.0",
     "typescript": "^5.3.3",
     "vitest": "^3.1.3",
     "vitest-environment-clarinet": "^2.3.0"
+  },
+  "devDependencies": {
+    "@types/readline-sync": "^1.4.4",
+    "ts-node": "^10.9.0"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
   }
 }
