@@ -35,7 +35,7 @@ export const supabase = createClient(
 });
 
 // Admin client for operations that need to bypass RLS
-export const supabaseAdmin = supabaseServiceKey 
+export const supabaseAdmin = supabaseServiceKey && supabaseUrl
   ? createClient(supabaseUrl, supabaseServiceKey, {
       auth: {
         autoRefreshToken: false,
