@@ -280,42 +280,42 @@ const GameDashboard: React.FC = () => {
               </div>
             ) : (
               <>
-                {/* Progress Ring Background */}
-                <svg className="w-32 h-32 transform -rotate-90" viewBox="0 0 120 120">
-                  <circle
-                    cx="60"
-                    cy="60"
-                    r="50"
-                    stroke="rgba(255,255,255,0.1)"
-                    strokeWidth="8"
-                    fill="none"
-                  />
-                  <circle
-                    cx="60"
-                    cy="60"
-                    r="50"
-                    stroke="url(#gradient)"
-                    strokeWidth="8"
-                    fill="none"
-                    strokeLinecap="round"
-                    strokeDasharray={`${(progressPercentage / 100) * 314} 314`}
-                    className="transition-all duration-1000 ease-out"
-                  />
-                  <defs>
-                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#10B981" />
-                      <stop offset="100%" stopColor="#3B82F6" />
-                    </linearGradient>
-                  </defs>
-                </svg>
-                
-                {/* Center Content */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center">
+            {/* Progress Ring Background */}
+            <svg className="w-32 h-32 transform -rotate-90" viewBox="0 0 120 120">
+              <circle
+                cx="60"
+                cy="60"
+                r="50"
+                stroke="rgba(255,255,255,0.1)"
+                strokeWidth="8"
+                fill="none"
+              />
+              <circle
+                cx="60"
+                cy="60"
+                r="50"
+                stroke="url(#gradient)"
+                strokeWidth="8"
+                fill="none"
+                strokeLinecap="round"
+                strokeDasharray={`${(progressPercentage / 100) * 314} 314`}
+                className="transition-all duration-1000 ease-out"
+              />
+              <defs>
+                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#10B981" />
+                  <stop offset="100%" stopColor="#3B82F6" />
+                </linearGradient>
+              </defs>
+            </svg>
+            
+            {/* Center Content */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="text-center">
                     <div className="text-2xl font-bold text-gray-900">{todayCompletedTasks}</div>
                     <div className="text-xs text-gray-600">of {activeTasks}</div>
-                  </div>
-                </div>
+              </div>
+            </div>
               </>
             )}
           </div>
@@ -384,7 +384,7 @@ const GameDashboard: React.FC = () => {
                     </div>
                   </div>
                 )}
-
+                
                 <div className="flex items-center justify-between">
                   <span className={`text-sm ${isCompletedToday ? 'text-gray-400' : 'text-gray-600'}`}>
                     {task.task_categories?.name || 'General'}

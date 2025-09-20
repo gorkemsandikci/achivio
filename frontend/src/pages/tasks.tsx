@@ -294,8 +294,8 @@ export default function Tasks() {
             ) : (
               filteredTasks.map((task) => {
                 const taskStarted = isTaskStarted(task.id);
-                
-                return (
+              
+              return (
                 <div
                   key={task.id}
                   className={`bg-white/80 backdrop-blur-xl rounded-3xl p-5 border-2 transition-all duration-300 transform shadow-lg ${
@@ -327,11 +327,11 @@ export default function Tasks() {
                         <h3 className="text-lg font-bold text-gray-900">
                           {task.title}
                         </h3>
-                        <div className="flex items-center space-x-2">
-                          <div className={`px-2 py-1 rounded-full text-xs font-bold ${getDifficultyColor(task.difficulty)}`}>
-                            {task.difficulty}
+                          <div className="flex items-center space-x-2">
+                            <div className={`px-2 py-1 rounded-full text-xs font-bold ${getDifficultyColor(task.difficulty)}`}>
+                              {task.difficulty}
+                            </div>
                           </div>
-                        </div>
                       </div>
                       
                       <p className="text-sm mb-3 text-gray-600">
@@ -407,7 +407,7 @@ export default function Tasks() {
                     </div>
                   </div>
                 </div>
-                );
+              );
               })
             )}
           </div>
