@@ -1,6 +1,6 @@
 # Achivio - Blockchain Habit Tracker 🎯
 
-![Achivio Hero](assets/images/main_hero.jpg)
+![Achivio Hero](frontend/public/assets/images/main_hero.jpg)
 
 > **Motivational habit tracking meets blockchain rewards and NFT achievements**
 
@@ -11,21 +11,20 @@ Achivio is a comprehensive habit tracking application built on the Stacks blockc
 <div align="center">
 
 ### 💎 ACHIV Tokens
-![ACHIV Tokensf](frontend/public/assets/images/3d_rendered_crypto_tokens.jpg)
-![ACHIV Tokens](assets/images/3d_rendered_crypto_tokens.jpg)
+![ACHIV Tokens](frontend/public/assets/images/3d_rendered_crypto_tokens.jpg)
 
 ### 🏆 Achievement System
-![Achievement Badges](assets/images/achievement-badges.jpg)
+![Achievement Badges](frontend/public/assets/images/achievement-badges.jpg)
 
 ### 🔥 Streak Rewards
-![Streak Counter](assets/images/animated_fire_streak_counter.jpg)
+![Streak Counter](frontend/public/assets/images/animated_fire_streak_counter.jpg)
 
 ### 🏠 Virtual Room Customization
 <table>
   <tr>
-    <td><img src="assets/images/virtual_room_preview_1.jpg" alt="Modern Room" width="200"/></td>
-    <td><img src="assets/images/virtual_room_preview_2.jpg" alt="Cozy Room" width="200"/></td>
-    <td><img src="assets/images/virtual_room_preview_3.jpg" alt="Gaming Room" width="200"/></td>
+    <td><img src="frontend/public/assets/images/virtual_room_preview_1.jpg" alt="Modern Room" width="200"/></td>
+    <td><img src="frontend/public/assets/images/virtual_room_preview_2.jpg" alt="Cozy Room" width="200"/></td>
+    <td><img src="frontend/public/assets/images/virtual_room_preview_3.jpg" alt="Gaming Room" width="200"/></td>
   </tr>
   <tr>
     <td align="center"><em>Modern Workspace</em></td>
@@ -35,10 +34,10 @@ Achivio is a comprehensive habit tracking application built on the Stacks blockc
 </table>
 
 ### 📊 Dashboard & Analytics
-![Dashboard](assets/images/dashboard_mockup.jpg)
+![Dashboard](frontend/public/assets/images/dashboard_mockup.jpg)
 
 ### 🏅 Leaderboard Competition
-![Leaderboard](assets/images/leaderboard_interface.jpg)
+![Leaderboard](frontend/public/assets/images/leaderboard_interface.jpg)
 
 </div>
 
@@ -67,25 +66,25 @@ Achivio consists of 6 interconnected smart contracts:
 ## 📱 User Interface
 
 ### Mobile App Screenshots
-![App Store Screenshots](assets/images/app_store_screenshots.jpg)
+![App Store Screenshots](frontend/public/assets/images/app_store_screenshots.jpg)
 
 ### Progress Tracking & Analytics
-![Progress Charts](assets/images/progress_charts.jpg)
+![Progress Charts](frontend/public/assets/images/progress_charts.jpg)
 
 ### Achievement Celebrations
 <table>
   <tr>
-    <td><img src="assets/images/achievement_unlock_animation.jpg" alt="Achievement Animation" width="250"/></td>
-    <td><img src="assets/images/milestone_celebration.jpg" alt="Milestone Celebration" width="250"/></td>
-    <td><img src="assets/images/success_illustration.jpg" alt="Success" width="250"/></td>
+    <td><img src="frontend/public/assets/images/achievement_unlock_animation.jpg" alt="Achievement Animation" width="250"/></td>
+    <td><img src="frontend/public/assets/images/milestone_celebration.jpg" alt="Milestone Celebration" width="250"/></td>
+    <td><img src="frontend/public/assets/images/success_illustration.jpg" alt="Success" width="250"/></td>
   </tr>
 </table>
 
 ### Social Sharing
-![Social Sharing Card](assets/images/social_sharing_card.jpg)
+![Social Sharing Card](frontend/public/assets/images/social_sharing_card.jpg)
 
 ### Marketing Materials
-![Promotional Banner](assets/images/promotional_banner.jpg)
+![Promotional Banner](frontend/public/assets/images/promotional_banner.jpg)
 
 ## 🚀 Quick Start
 
