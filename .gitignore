@@ -82,6 +82,20 @@ typings/
 .env.test.local
 .env.production.local
 
+# Supabase environment files
+frontend/.env
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+
+# Any environment files
+**/.env
+**/.env.local
+**/.env.development.local
+**/.env.test.local
+**/.env.production.local
+
 # parcel-bundler cache (https://parceljs.org/)
 .cache
 .parcel-cache

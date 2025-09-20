@@ -1,9 +1,14 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { AppConfig, UserSession, showConnect } from '@stacks/connect';
+import { DatabaseService } from '../services/database';
+import { Database } from '../lib/supabase';
+
+type User = Database['public']['Tables']['users']['Row'];
 
 interface WalletContextType {
   userSession: UserSession;
   userData: any;
+  dbUser: User | null;
   isConnected: boolean;
   isLoading: boolean;
   stxAddress: string | null;
@@ -22,10 +27,10 @@ interface WalletProviderProps {
 export const WalletProvider: React.FC<WalletProviderProps> = ({ children }) => {
   const [userSession] = useState(() => new UserSession({ appConfig }));
   const [userData, setUserData] = useState(null);
+  const [dbUser, setDbUser] = useState<User | null>(null);
   const [isConnected, setIsConnected] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [stxAddress, setStxAddress] = useState<string | null>(null);
-  const [lastCheckTime, setLastCheckTime] = useState(0);
 
   useEffect(() => {
     const checkAuthStatus = async () => {
@@ -41,12 +46,12 @@ export const WalletProvider: React.FC<WalletProviderProps> = ({ children }) => {
             setIsConnected(true);
             setStxAddress(walletAddress);
             
-            // Refresh page after successful connection to show profile
-            setTimeout(() => {
-              if (typeof window !== 'undefined') {
-                window.location.reload();
-              }
-            }, 500);
+            // Ensure user exists in database (non-blocking)
+            DatabaseService.ensureUserExists(walletAddress).then(dbUser => {
+              setDbUser(dbUser);
+            }).catch(error => {
+              console.error('Database error:', error);
+            });
           } else {
             userSession.signUserOut();
             setUserData(null);
@@ -62,16 +67,28 @@ export const WalletProvider: React.FC<WalletProviderProps> = ({ children }) => {
           
           if (walletAddress && walletAddress.trim() !== '') {
             setUserData(userData);
-            setIsConnected(true);
             setStxAddress(walletAddress);
+            setIsConnected(true);
+            
+            // Ensure user exists in database (non-blocking)
+            DatabaseService.ensureUserExists(walletAddress).then(dbUser => {
+              setDbUser(dbUser);
+              if (!dbUser) {
+                console.error('Failed to create/fetch user from database');
+              }
+            }).catch(error => {
+              console.error('Database error:', error);
+            });
           } else {
             userSession.signUserOut();
             setUserData(null);
+            setDbUser(null);
             setIsConnected(false);
             setStxAddress(null);
           }
         } else {
           setUserData(null);
+          setDbUser(null);
           setIsConnected(false);
           setStxAddress(null);
         }
@@ -80,6 +97,7 @@ export const WalletProvider: React.FC<WalletProviderProps> = ({ children }) => {
         // Clear session on error to ensure clean state
         userSession.signUserOut();
         setUserData(null);
+        setDbUser(null);
         setIsConnected(false);
         setStxAddress(null);
       } finally {
@@ -88,43 +106,9 @@ export const WalletProvider: React.FC<WalletProviderProps> = ({ children }) => {
     };
 
     checkAuthStatus();
-    setLastCheckTime(Date.now());
   }, []); // Remove userSession dependency to avoid infinite loops
 
-  // Periodic check for auth status changes
-  useEffect(() => {
-    const interval = setInterval(async () => {
-      // Only check if not currently loading and if some time has passed
-      if (!isLoading && Date.now() - lastCheckTime > 2000) {
-        try {
-          const wasConnected = isConnected;
-          
-          if (userSession.isUserSignedIn()) {
-            const userData = userSession.loadUserData();
-            const walletAddress = userData.profile.stxAddress?.testnet || userData.profile.stxAddress?.mainnet;
-            
-            if (walletAddress && walletAddress.trim() !== '' && !wasConnected) {
-              // State changed from disconnected to connected
-              console.log('Auth state changed: now connected');
-              setUserData(userData);
-              setIsConnected(true);
-              setStxAddress(walletAddress);
-              
-              // Refresh to show new state
-              if (typeof window !== 'undefined') {
-                window.location.reload();
-              }
-            }
-          }
-        } catch (error) {
-          console.error('Periodic auth check error:', error);
-        }
-        setLastCheckTime(Date.now());
-      }
-    }, 1000); // Check every second
-
-    return () => clearInterval(interval);
-  }, [isConnected, isLoading, lastCheckTime, userSession]);
+  // Removed periodic check to prevent infinite refresh loops
 
   const connectWallet = () => {
     showConnect({
@@ -135,9 +119,7 @@ export const WalletProvider: React.FC<WalletProviderProps> = ({ children }) => {
       redirectTo: '/',
       onFinish: () => {
         // Force a check after connection is finished
-        console.log('Connect finished, checking auth status...');
         setTimeout(() => {
-          // Re-run auth check after connection
           const recheckAuth = async () => {
             try {
               if (userSession.isUserSignedIn()) {
@@ -145,15 +127,16 @@ export const WalletProvider: React.FC<WalletProviderProps> = ({ children }) => {
                 const walletAddress = userData.profile.stxAddress?.testnet || userData.profile.stxAddress?.mainnet;
                 
                 if (walletAddress && walletAddress.trim() !== '') {
-                  console.log('Connection successful, refreshing page...');
                   setUserData(userData);
                   setIsConnected(true);
                   setStxAddress(walletAddress);
                   
-                  // Refresh to show new state
-                  if (typeof window !== 'undefined') {
-                    window.location.reload();
-                  }
+                  // Ensure user exists in database (non-blocking)
+                  DatabaseService.ensureUserExists(walletAddress).then(dbUser => {
+                    setDbUser(dbUser);
+                  }).catch(error => {
+                    console.error('Database error:', error);
+                  });
                 }
               }
             } catch (error) {
@@ -171,6 +154,7 @@ export const WalletProvider: React.FC<WalletProviderProps> = ({ children }) => {
   const disconnectWallet = () => {
     userSession.signUserOut();
     setUserData(null);
+    setDbUser(null);
     setIsConnected(false);
     setIsLoading(false);
     setStxAddress(null);
@@ -186,6 +170,7 @@ export const WalletProvider: React.FC<WalletProviderProps> = ({ children }) => {
       value={{
         userSession,
         userData,
+        dbUser,
         isConnected,
         isLoading,
         stxAddress,
