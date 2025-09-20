@@ -7,7 +7,7 @@ type User = Database['public']['Tables']['users']['Row'];
 
 interface WalletContextType {
   userSession: UserSession;
-  userData: any;
+  userData: any | null;
   dbUser: User | null;
   isConnected: boolean;
   isLoading: boolean;
@@ -26,7 +26,7 @@ interface WalletProviderProps {
 
 export const WalletProvider: React.FC<WalletProviderProps> = ({ children }) => {
   const [userSession] = useState(() => new UserSession({ appConfig }));
-  const [userData, setUserData] = useState(null);
+  const [userData, setUserData] = useState<any | null>(null);
   const [dbUser, setDbUser] = useState<User | null>(null);
   const [isConnected, setIsConnected] = useState(false);
   const [isLoading, setIsLoading] = useState(false);

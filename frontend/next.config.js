@@ -10,10 +10,11 @@ const nextConfig = {
   
   // Vercel için output ayarları
   output: 'standalone',
+  outputFileTracingRoot: __dirname,
   
   // Build ayarları
   experimental: {
-    esmExternals: false,
+    // esmExternals: false, // Bu satırı kaldırdık
   },
   
   // Webpack ayarları

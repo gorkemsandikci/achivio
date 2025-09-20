@@ -12,7 +12,7 @@ type Transaction = Database['public']['Tables']['transactions']['Row'];
 
 // Enhanced types with joins
 export interface TaskWithCategory extends Task {
-  task_categories?: TaskCategory;
+  task_categories?: TaskCategory | null;
 }
 
 export interface UserTaskWithTask extends UserTask {
@@ -168,7 +168,7 @@ export class DatabaseService {
         is_active,
         created_at,
         updated_at,
-        task_categories (*)
+        task_categories!inner (*)
       `)
       .eq('is_active', true);
 
@@ -192,7 +192,7 @@ export class DatabaseService {
     console.log('✅ Tasks fetched successfully:', data?.length || 0, 'tasks');
     console.log('📊 First task sample:', data?.[0]);
     
-    return data || [];
+    return (data || []) as unknown as TaskWithCategory[];
   }
 
   static async getUserTasks(userId: string, categorySlug?: string): Promise<UserTaskWithTask[]> {
