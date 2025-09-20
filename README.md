@@ -11,6 +11,7 @@ Achivio is a comprehensive habit tracking application built on the Stacks blockc
 <div align="center">
 
 ### 💎 ACHIV Tokens
+![ACHIV Tokensf](frontend/public/assets/images/3d_rendered_crypto_tokens.jpg)
 ![ACHIV Tokens](assets/images/3d_rendered_crypto_tokens.jpg)
 
 ### 🏆 Achievement System
