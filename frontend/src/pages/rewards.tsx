@@ -3,12 +3,19 @@ import Head from 'next/head';
 import Image from 'next/image';
 import MobileLayout from '../components/MobileLayout';
 import ProtectedRoute from '../components/ProtectedRoute';
+import ResponsiveContainer from '../components/ResponsiveContainer';
+import LogoHeader from '../components/LogoHeader';
 import { useWallet } from '../contexts/WalletContext';
 
 export default function Rewards() {
   return (
     <ProtectedRoute>
-      <RewardsContent />
+      <ResponsiveContainer>
+        <MobileLayout>
+          <LogoHeader />
+          <RewardsContent />
+        </MobileLayout>
+      </ResponsiveContainer>
     </ProtectedRoute>
   );
 }

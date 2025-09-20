@@ -53,19 +53,19 @@ const MobileLayout: React.FC<MobileLayoutProps> = ({ children }) => {
   };
 
       return (
-        <div className="min-h-screen bg-gray-50 relative overflow-hidden">
+        <div className="h-full bg-gray-50 relative flex flex-col">
           {/* Subtle Background Pattern */}
           <div className="absolute inset-0 overflow-hidden">
             <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-white to-gray-100 opacity-50"></div>
           </div>
 
-      {/* Main Content Area */}
-      <div className={`pb-24 transition-all duration-300 ${isTransitioning ? 'opacity-50 scale-95' : 'opacity-100 scale-100'}`}>
+      {/* Main Content Area - Scrollable */}
+      <div className={`flex-1 overflow-y-auto transition-all duration-300 ${isTransitioning ? 'opacity-50 scale-95' : 'opacity-100 scale-100'}`}>
         {children}
       </div>
 
-      {/* Bottom Navigation */}
-      <div className="fixed bottom-0 left-0 right-0 z-50">
+      {/* Bottom Navigation - Fixed at bottom */}
+      <div className="flex-shrink-0 z-50">
         {/* Active Tab Indicator - Outside navigation */}
         <div 
           className="absolute -top-1 h-1 bg-blue-500 rounded-full transition-all duration-700 ease-out z-10"
@@ -103,12 +103,6 @@ const MobileLayout: React.FC<MobileLayoutProps> = ({ children }) => {
         </div>
       </div>
 
-      {/* Floating Action Button for Quick Task Add */}
-      <div className="fixed bottom-28 right-6 z-40">
-        <button className="w-14 h-14 bg-blue-500 rounded-full shadow-lg flex items-center justify-center text-white text-xl transform hover:scale-105 transition-all duration-300 hover:bg-blue-600">
-          ➕
-        </button>
-      </div>
 
     </div>
   );

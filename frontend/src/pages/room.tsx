@@ -3,12 +3,19 @@ import Image from 'next/image';
 import { useState } from 'react';
 import MobileLayout from '../components/MobileLayout';
 import ProtectedRoute from '../components/ProtectedRoute';
+import ResponsiveContainer from '../components/ResponsiveContainer';
+import LogoHeader from '../components/LogoHeader';
 import { useWallet } from '../contexts/WalletContext';
 
 export default function VirtualRoom() {
   return (
     <ProtectedRoute>
-      <VirtualRoomContent />
+      <ResponsiveContainer>
+        <MobileLayout>
+          <LogoHeader />
+          <VirtualRoomContent />
+        </MobileLayout>
+      </ResponsiveContainer>
     </ProtectedRoute>
   );
 }

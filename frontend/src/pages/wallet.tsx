@@ -2,6 +2,8 @@ import React from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import MobileLayout from '../components/MobileLayout';
+import ResponsiveContainer from '../components/ResponsiveContainer';
+import LogoHeader from '../components/LogoHeader';
 import { useWallet } from '../contexts/WalletContext';
 
 export default function Wallet() {
@@ -20,13 +22,14 @@ export default function Wallet() {
   // If not connected, show wallet connection page
   if (!isConnected) {
     return (
-      <>
+      <ResponsiveContainer>
         <Head>
           <title>Connect Wallet - Achivio</title>
           <meta name="description" content="Connect your Stacks wallet to start earning rewards" />
         </Head>
 
         <MobileLayout>
+          <LogoHeader />
           <div className="px-4 pt-4">
             {/* Header */}
             <div className="mb-6 text-center">
@@ -94,7 +97,7 @@ export default function Wallet() {
             </div>
           </div>
         </MobileLayout>
-      </>
+      </ResponsiveContainer>
     );
   }
 
@@ -108,13 +111,14 @@ export default function Wallet() {
   ];
 
   return (
-    <>
+    <ResponsiveContainer>
       <Head>
         <title>Profile - Achivio</title>
         <meta name="description" content="Your profile and wallet connection" />
       </Head>
 
       <MobileLayout>
+        <LogoHeader />
         <div className="px-4 pt-4">
           {/* Header */}
           <div className="mb-6">
@@ -314,6 +318,6 @@ export default function Wallet() {
           </div>
         </div>
       </MobileLayout>
-    </>
+    </ResponsiveContainer>
   );
 }

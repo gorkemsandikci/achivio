@@ -8,7 +8,7 @@ const GameDashboard: React.FC = () => {
   const [userTasks, setUserTasks] = useState<any[]>([]);
   const [recentCompletions, setRecentCompletions] = useState<any[]>([]);
   const [showCelebration, setShowCelebration] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   // Load user dashboard data from database
   useEffect(() => {
@@ -274,20 +274,14 @@ const GameDashboard: React.FC = () => {
         
         <div className="flex items-center justify-center mb-4">
           <div className="relative w-32 h-32">
-            {isLoading ? (
-              <div className="w-32 h-32 flex items-center justify-center">
-                <div className="animate-spin rounded-full h-16 w-16 border-4 border-gray-300 border-t-transparent"></div>
-              </div>
-            ) : (
-              <>
             {/* Progress Ring Background */}
             <svg className="w-32 h-32 transform -rotate-90" viewBox="0 0 120 120">
               <circle
                 cx="60"
                 cy="60"
                 r="50"
-                stroke="rgba(255,255,255,0.1)"
-                strokeWidth="8"
+                stroke="rgba(0,0,0,0.2)"
+                strokeWidth="10"
                 fill="none"
               />
               <circle
@@ -295,7 +289,7 @@ const GameDashboard: React.FC = () => {
                 cy="60"
                 r="50"
                 stroke="url(#gradient)"
-                strokeWidth="8"
+                strokeWidth="10"
                 fill="none"
                 strokeLinecap="round"
                 strokeDasharray={`${(progressPercentage / 100) * 314} 314`}
@@ -312,12 +306,10 @@ const GameDashboard: React.FC = () => {
             {/* Center Content */}
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="text-center">
-                    <div className="text-2xl font-bold text-gray-900">{todayCompletedTasks}</div>
-                    <div className="text-xs text-gray-600">of {activeTasks}</div>
+                <div className="text-2xl font-bold text-gray-900">{todayCompletedTasks}</div>
+                <div className="text-xs text-gray-600">of {activeTasks}</div>
               </div>
             </div>
-              </>
-            )}
           </div>
         </div>
       </div>

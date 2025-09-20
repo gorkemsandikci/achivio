@@ -2,6 +2,8 @@ import Head from 'next/head';
 import MobileLayout from '../components/MobileLayout';
 import GameDashboard from '../components/GameDashboard';
 import ProtectedRoute from '../components/ProtectedRoute';
+import ResponsiveContainer from '../components/ResponsiveContainer';
+import LogoHeader from '../components/LogoHeader';
 
 export default function Dashboard() {
   return (
@@ -11,9 +13,12 @@ export default function Dashboard() {
         <meta name="description" content="Your habit tracking dashboard" />
       </Head>
 
-      <MobileLayout>
-        <GameDashboard />
-      </MobileLayout>
+      <ResponsiveContainer>
+        <MobileLayout>
+          <LogoHeader />
+          <GameDashboard />
+        </MobileLayout>
+      </ResponsiveContainer>
     </ProtectedRoute>
   );
 }

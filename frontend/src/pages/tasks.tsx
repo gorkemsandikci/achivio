@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import MobileLayout from '../components/MobileLayout';
 import ProtectedRoute from '../components/ProtectedRoute';
+import ResponsiveContainer from '../components/ResponsiveContainer';
+import LogoHeader from '../components/LogoHeader';
 import { useWallet } from '../contexts/WalletContext';
 import { DatabaseService } from '../services/database';
 
@@ -248,8 +250,10 @@ export default function Tasks() {
         <meta name="description" content="Complete daily tasks and earn rewards" />
       </Head>
 
-      <MobileLayout>
-        <div className="px-4 pt-4">
+      <ResponsiveContainer>
+        <MobileLayout>
+          <LogoHeader />
+          <div className="px-4 pt-4">
           {/* Header */}
           <div className="mb-6">
             <h1 className="text-3xl font-bold text-gray-900 mb-2">Daily Quests 🎯</h1>
@@ -419,7 +423,8 @@ export default function Tasks() {
             </button>
           </div>
         </div>
-      </MobileLayout>
+        </MobileLayout>
+      </ResponsiveContainer>
     </ProtectedRoute>
   );
 }
