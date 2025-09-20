@@ -7,6 +7,7 @@ const GameDashboard: React.FC = () => {
   const [xp, setXp] = useState(1247);
   const [nextLevelXp] = useState(2000);
   const [showCelebration, setShowCelebration] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const dailyTasks = [
     { 
@@ -53,7 +54,16 @@ const GameDashboard: React.FC = () => {
 
   const completedTasks = dailyTasks.filter(task => task.completed).length;
   const totalTasks = dailyTasks.length;
-  const progressPercentage = (completedTasks / totalTasks) * 100;
+  const progressPercentage = totalTasks > 0 ? (completedTasks / totalTasks) * 100 : 0;
+  
+  // Simulate loading for initial render
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+    
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleTaskComplete = (taskId: number) => {
     setShowCelebration(true);
@@ -134,65 +144,73 @@ const GameDashboard: React.FC = () => {
       </div>
 
       {/* Daily Progress Ring */}
-      <div className="bg-white/10 backdrop-blur-xl rounded-3xl p-6 mb-6 border border-white/20">
+      <div className="bg-white/80 backdrop-blur-xl rounded-3xl p-6 mb-6 border border-gray-200 shadow-lg">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-xl font-bold text-white">Today's Progress</h2>
-          <span className="text-white/80 text-sm">{Math.round(progressPercentage)}% Complete</span>
+          <h2 className="text-xl font-bold text-gray-900">Today's Progress</h2>
+          <span className="text-gray-600 text-sm">{Math.round(progressPercentage)}% Complete</span>
         </div>
         
         <div className="flex items-center justify-center mb-4">
           <div className="relative w-32 h-32">
-            {/* Progress Ring Background */}
-            <svg className="w-32 h-32 transform -rotate-90" viewBox="0 0 120 120">
-              <circle
-                cx="60"
-                cy="60"
-                r="50"
-                stroke="rgba(255,255,255,0.1)"
-                strokeWidth="8"
-                fill="none"
-              />
-              <circle
-                cx="60"
-                cy="60"
-                r="50"
-                stroke="url(#gradient)"
-                strokeWidth="8"
-                fill="none"
-                strokeLinecap="round"
-                strokeDasharray={`${(progressPercentage / 100) * 314} 314`}
-                className="transition-all duration-1000 ease-out"
-              />
-              <defs>
-                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#10B981" />
-                  <stop offset="100%" stopColor="#3B82F6" />
-                </linearGradient>
-              </defs>
-            </svg>
-            
-            {/* Center Content */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="text-center">
-                <div className="text-2xl font-bold text-white">{completedTasks}</div>
-                <div className="text-xs text-white/80">of {totalTasks}</div>
+            {isLoading ? (
+              <div className="w-32 h-32 flex items-center justify-center">
+                <div className="animate-spin rounded-full h-16 w-16 border-4 border-gray-300 border-t-transparent"></div>
               </div>
-            </div>
+            ) : (
+              <>
+                {/* Progress Ring Background */}
+                <svg className="w-32 h-32 transform -rotate-90" viewBox="0 0 120 120">
+                  <circle
+                    cx="60"
+                    cy="60"
+                    r="50"
+                    stroke="rgba(255,255,255,0.1)"
+                    strokeWidth="8"
+                    fill="none"
+                  />
+                  <circle
+                    cx="60"
+                    cy="60"
+                    r="50"
+                    stroke="url(#gradient)"
+                    strokeWidth="8"
+                    fill="none"
+                    strokeLinecap="round"
+                    strokeDasharray={`${(progressPercentage / 100) * 314} 314`}
+                    className="transition-all duration-1000 ease-out"
+                  />
+                  <defs>
+                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="#10B981" />
+                      <stop offset="100%" stopColor="#3B82F6" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+                
+                {/* Center Content */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-gray-900">{completedTasks}</div>
+                    <div className="text-xs text-gray-600">of {totalTasks}</div>
+                  </div>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </div>
 
       {/* Daily Tasks */}
       <div className="space-y-3">
-        <h2 className="text-xl font-bold text-white mb-4">Today's Quests</h2>
+        <h2 className="text-xl font-bold text-gray-900 mb-4">Today's Quests</h2>
         
         {dailyTasks.map((task) => (
           <div
             key={task.id}
-            className={`bg-white/10 backdrop-blur-xl rounded-2xl p-4 border transition-all duration-300 transform ${
+            className={`bg-white/80 backdrop-blur-xl rounded-2xl p-4 border transition-all duration-300 transform shadow-lg ${
               task.completed 
                 ? 'border-green-400/50 scale-98 opacity-75' 
-                : 'border-white/20 hover:scale-102 hover:border-white/40 active:scale-98'
+                : 'border-gray-200 hover:scale-102 hover:border-gray-300 active:scale-98'
             }`}
             onClick={() => !task.completed && handleTaskComplete(task.id)}
           >
@@ -207,7 +225,7 @@ const GameDashboard: React.FC = () => {
               {/* Task Info */}
               <div className="flex-1">
                 <div className="flex items-center justify-between mb-1">
-                  <h3 className={`font-semibold ${task.completed ? 'text-white/60 line-through' : 'text-white'}`}>
+                  <h3 className={`font-semibold ${task.completed ? 'text-gray-500 line-through' : 'text-gray-900'}`}>
                     {task.title}
                   </h3>
                   {!task.completed && (
@@ -218,11 +236,11 @@ const GameDashboard: React.FC = () => {
                 </div>
                 
                 <div className="flex items-center justify-between">
-                  <span className={`text-sm ${task.completed ? 'text-white/50' : 'text-white/80'}`}>
+                  <span className={`text-sm ${task.completed ? 'text-gray-400' : 'text-gray-600'}`}>
                     {task.category}
                   </span>
                   <div className="flex items-center space-x-2">
-                    <span className={`text-sm font-medium ${task.completed ? 'text-white/50' : 'text-green-400'}`}>
+                    <span className={`text-sm font-medium ${task.completed ? 'text-gray-400' : 'text-green-600'}`}>
                       +{task.reward} ACHIV
                     </span>
                   </div>

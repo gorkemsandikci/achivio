@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
+import { useWallet } from '../contexts/WalletContext';
 
 interface MobileLayoutProps {
   children: React.ReactNode;
@@ -8,6 +9,7 @@ interface MobileLayoutProps {
 
 const MobileLayout: React.FC<MobileLayoutProps> = ({ children }) => {
   const router = useRouter();
+  const { isConnected } = useWallet();
   const [activeTab, setActiveTab] = useState('dashboard');
   const [isTransitioning, setIsTransitioning] = useState(false);
 
@@ -30,13 +32,22 @@ const MobileLayout: React.FC<MobileLayoutProps> = ({ children }) => {
   const handleTabChange = async (tabId: string) => {
     if (tabId === activeTab) return;
     
-    setIsTransitioning(true);
     const targetTab = navItems.find(item => item.id === tabId);
+    if (!targetTab) return;
     
-    if (targetTab) {
-      await router.push(targetTab.path);
-      setActiveTab(tabId);
+    // Protected routes require wallet connection
+    const protectedRoutes = ['/dashboard', '/tasks', '/rewards', '/room'];
+    const isProtectedRoute = protectedRoutes.includes(targetTab.path);
+    
+    if (isProtectedRoute && !isConnected) {
+      console.log('🚫 MobileLayout: Korumalı sayfaya erişim engellendi, wallet sayfasına yönlendiriliyor');
+      await router.push('/wallet');
+      return;
     }
+    
+    setIsTransitioning(true);
+    await router.push(targetTab.path);
+    setActiveTab(tabId);
     
     setTimeout(() => setIsTransitioning(false), 300);
   };

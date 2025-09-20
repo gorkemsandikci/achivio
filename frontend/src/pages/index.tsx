@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Image from 'next/image';
+import Link from 'next/link';
 import MobileLayout from '../components/MobileLayout';
 import HeroSection from '../components/HeroSection';
 
@@ -108,12 +109,12 @@ export default function Home() {
               Join thousands of users who are already earning blockchain rewards for their daily habits.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="/wallet" className="bg-white text-green-600 font-bold py-4 px-8 rounded-full text-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 text-center">
+              <Link href="/wallet" className="bg-white text-green-600 font-bold py-4 px-8 rounded-full text-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 text-center">
                 🔗 Connect Testnet Wallet
-              </a>
-              <a href="/dashboard" className="border-2 border-gray-300 text-gray-700 font-bold py-4 px-8 rounded-full text-lg hover:bg-white hover:text-green-600 transition-all duration-300 text-center">
+              </Link>
+              <Link href="/dashboard" className="border-2 border-gray-300 text-gray-700 font-bold py-4 px-8 rounded-full text-lg hover:bg-white hover:text-green-600 transition-all duration-300 text-center">
                 📊 View Dashboard
-              </a>
+              </Link>
             </div>
           </div>
         </section>
@@ -135,15 +136,15 @@ export default function Home() {
                 Blockchain-powered habit tracking with real rewards
               </p>
               <div className="flex justify-center space-x-6">
-                <a href="/dashboard" className="text-gray-400 hover:text-white transition-colors">
+                <Link href="/dashboard" className="text-gray-400 hover:text-white transition-colors">
                   Dashboard
-                </a>
-                <a href="/achievements" className="text-gray-400 hover:text-white transition-colors">
+                </Link>
+                <Link href="/achievements" className="text-gray-400 hover:text-white transition-colors">
                   Achievements
-                </a>
-                <a href="/room" className="text-gray-400 hover:text-white transition-colors">
+                </Link>
+                <Link href="/room" className="text-gray-400 hover:text-white transition-colors">
                   Virtual Room
-                </a>
+                </Link>
                 <a href="#" className="text-gray-400 hover:text-white transition-colors">
                   Docs
                 </a>

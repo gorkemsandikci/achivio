@@ -165,7 +165,7 @@ export default function Tasks() {
                   className={`flex items-center space-x-2 px-4 py-2 rounded-2xl whitespace-nowrap transition-all duration-300 ${
                     selectedCategory === category.id
                       ? `bg-gradient-to-r ${category.color} text-gray-900 shadow-lg scale-105`
-                      : 'bg-white/10 text-gray-600 hover:bg-white/20'
+                      : 'bg-white/60 border border-gray-200 text-gray-600 hover:bg-white/80 shadow-sm'
                   }`}
                 >
                   <span className="text-lg">{category.icon}</span>
@@ -183,10 +183,10 @@ export default function Tasks() {
               return (
                 <div
                   key={task.id}
-                  className={`bg-white/10 backdrop-blur-xl rounded-3xl p-5 border transition-all duration-300 transform ${
+                  className={`bg-white/80 backdrop-blur-xl rounded-3xl p-5 border-2 transition-all duration-300 transform shadow-lg ${
                     isCompleted 
                       ? 'border-green-400/50 scale-98 opacity-75' 
-                      : 'border-white/20 hover:scale-102 hover:border-white/40 active:scale-98'
+                      : 'border-gray-200 hover:scale-102 hover:border-gray-300 active:scale-98'
                   }`}
                   onClick={() => !isCompleted && completeTask(task.id)}
                 >

@@ -1,8 +1,17 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import MobileLayout from '../components/MobileLayout';
+import ProtectedRoute from '../components/ProtectedRoute';
 
 export default function Achievements() {
+  return (
+    <ProtectedRoute>
+      <AchievementsContent />
+    </ProtectedRoute>
+  );
+}
+
+function AchievementsContent() {
   const badges = [
     {
       id: 1,

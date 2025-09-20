@@ -1,11 +1,11 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { AppConfig, UserSession, showConnect } from '@stacks/connect';
-import { useRouter } from 'next/router';
 
 interface WalletContextType {
   userSession: UserSession;
   userData: any;
   isConnected: boolean;
+  isLoading: boolean;
   stxAddress: string | null;
   connectWallet: () => void;
   disconnectWallet: () => void;
@@ -23,51 +23,108 @@ export const WalletProvider: React.FC<WalletProviderProps> = ({ children }) => {
   const [userSession] = useState(() => new UserSession({ appConfig }));
   const [userData, setUserData] = useState(null);
   const [isConnected, setIsConnected] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [stxAddress, setStxAddress] = useState<string | null>(null);
+  const [lastCheckTime, setLastCheckTime] = useState(0);
 
   useEffect(() => {
     const checkAuthStatus = async () => {
+      setIsLoading(true);
       try {
         if (userSession.isSignInPending()) {
-          console.log('Processing pending sign in...');
           const userData = await userSession.handlePendingSignIn();
-          console.log('Sign in successful:', userData);
           
-          setUserData(userData);
-          setIsConnected(true);
-          setStxAddress(userData.profile.stxAddress?.testnet || userData.profile.stxAddress?.mainnet || null);
+          const walletAddress = userData.profile.stxAddress?.testnet || userData.profile.stxAddress?.mainnet;
           
-          // Redirect to dashboard after successful connection
-          setTimeout(() => {
-            if (typeof window !== 'undefined') {
-              window.location.href = '/dashboard';
-            }
-          }, 1000);
+          if (walletAddress && walletAddress.trim() !== '') {
+            setUserData(userData);
+            setIsConnected(true);
+            setStxAddress(walletAddress);
+            
+            // Refresh page after successful connection to show profile
+            setTimeout(() => {
+              if (typeof window !== 'undefined') {
+                window.location.reload();
+              }
+            }, 500);
+          } else {
+            userSession.signUserOut();
+            setUserData(null);
+            setIsConnected(false);
+            setStxAddress(null);
+          }
           
         } else if (userSession.isUserSignedIn()) {
-          console.log('User already signed in');
           const userData = userSession.loadUserData();
-          console.log('Loaded user data:', userData);
           
-          setUserData(userData);
-          setIsConnected(true);
-          setStxAddress(userData.profile.stxAddress?.testnet || userData.profile.stxAddress?.mainnet || null);
+          // Only set as connected if we have valid wallet address
+          const walletAddress = userData.profile.stxAddress?.testnet || userData.profile.stxAddress?.mainnet;
+          
+          if (walletAddress && walletAddress.trim() !== '') {
+            setUserData(userData);
+            setIsConnected(true);
+            setStxAddress(walletAddress);
+          } else {
+            userSession.signUserOut();
+            setUserData(null);
+            setIsConnected(false);
+            setStxAddress(null);
+          }
         } else {
-          console.log('User not signed in');
           setUserData(null);
           setIsConnected(false);
           setStxAddress(null);
         }
       } catch (error) {
         console.error('Auth check error:', error);
+        // Clear session on error to ensure clean state
+        userSession.signUserOut();
         setUserData(null);
         setIsConnected(false);
         setStxAddress(null);
+      } finally {
+        setIsLoading(false);
       }
     };
 
     checkAuthStatus();
-  }, [userSession]);
+    setLastCheckTime(Date.now());
+  }, []); // Remove userSession dependency to avoid infinite loops
+
+  // Periodic check for auth status changes
+  useEffect(() => {
+    const interval = setInterval(async () => {
+      // Only check if not currently loading and if some time has passed
+      if (!isLoading && Date.now() - lastCheckTime > 2000) {
+        try {
+          const wasConnected = isConnected;
+          
+          if (userSession.isUserSignedIn()) {
+            const userData = userSession.loadUserData();
+            const walletAddress = userData.profile.stxAddress?.testnet || userData.profile.stxAddress?.mainnet;
+            
+            if (walletAddress && walletAddress.trim() !== '' && !wasConnected) {
+              // State changed from disconnected to connected
+              console.log('Auth state changed: now connected');
+              setUserData(userData);
+              setIsConnected(true);
+              setStxAddress(walletAddress);
+              
+              // Refresh to show new state
+              if (typeof window !== 'undefined') {
+                window.location.reload();
+              }
+            }
+          }
+        } catch (error) {
+          console.error('Periodic auth check error:', error);
+        }
+        setLastCheckTime(Date.now());
+      }
+    }, 1000); // Check every second
+
+    return () => clearInterval(interval);
+  }, [isConnected, isLoading, lastCheckTime, userSession]);
 
   const connectWallet = () => {
     showConnect({
@@ -77,8 +134,35 @@ export const WalletProvider: React.FC<WalletProviderProps> = ({ children }) => {
       },
       redirectTo: '/',
       onFinish: () => {
-        // This will trigger the useEffect above
-        console.log('Wallet connection initiated');
+        // Force a check after connection is finished
+        console.log('Connect finished, checking auth status...');
+        setTimeout(() => {
+          // Re-run auth check after connection
+          const recheckAuth = async () => {
+            try {
+              if (userSession.isUserSignedIn()) {
+                const userData = userSession.loadUserData();
+                const walletAddress = userData.profile.stxAddress?.testnet || userData.profile.stxAddress?.mainnet;
+                
+                if (walletAddress && walletAddress.trim() !== '') {
+                  console.log('Connection successful, refreshing page...');
+                  setUserData(userData);
+                  setIsConnected(true);
+                  setStxAddress(walletAddress);
+                  
+                  // Refresh to show new state
+                  if (typeof window !== 'undefined') {
+                    window.location.reload();
+                  }
+                }
+              }
+            } catch (error) {
+              console.error('Recheck auth error:', error);
+            }
+          };
+          
+          recheckAuth();
+        }, 1000);
       },
       userSession,
     });
@@ -88,6 +172,7 @@ export const WalletProvider: React.FC<WalletProviderProps> = ({ children }) => {
     userSession.signUserOut();
     setUserData(null);
     setIsConnected(false);
+    setIsLoading(false);
     setStxAddress(null);
     
     // Redirect to home page after disconnect
@@ -102,6 +187,7 @@ export const WalletProvider: React.FC<WalletProviderProps> = ({ children }) => {
         userSession,
         userData,
         isConnected,
+        isLoading,
         stxAddress,
         connectWallet,
         disconnectWallet,

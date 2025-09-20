@@ -2,9 +2,18 @@ import React, { useState } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import MobileLayout from '../components/MobileLayout';
+import ProtectedRoute from '../components/ProtectedRoute';
 import { useWallet } from '../contexts/WalletContext';
 
 export default function Rewards() {
+  return (
+    <ProtectedRoute>
+      <RewardsContent />
+    </ProtectedRoute>
+  );
+}
+
+function RewardsContent() {
   const { isConnected, stxAddress } = useWallet();
   const [selectedTab, setSelectedTab] = useState('tokens');
   const [mintingBadge, setMintingBadge] = useState<string | null>(null);
@@ -120,7 +129,7 @@ export default function Rewards() {
           </div>
 
           {/* Tab Selector */}
-          <div className="flex bg-white/10 rounded-2xl p-1 mb-6">
+          <div className="flex bg-white/80 rounded-2xl p-1 mb-6 border border-gray-200 shadow-lg">
             <button
               onClick={() => setSelectedTab('tokens')}
               className={`flex-1 py-3 px-4 rounded-xl font-semibold transition-all duration-300 ${
@@ -185,12 +194,12 @@ export default function Rewards() {
               </div>
 
               {/* Recent Transactions */}
-              <div className="bg-white/10 backdrop-blur-xl rounded-3xl p-6 border border-white/20">
+              <div className="bg-white/80 backdrop-blur-xl rounded-3xl p-6 border border-gray-200 shadow-lg">
                 <h3 className="text-xl font-bold text-gray-900 mb-4">Recent Activity</h3>
                 
                 <div className="space-y-3">
                   {recentTransactions.map((tx, index) => (
-                    <div key={index} className="flex items-center justify-between p-3 bg-white/5 rounded-2xl">
+                    <div key={index} className="flex items-center justify-between p-3 bg-white/60 rounded-2xl border border-gray-100 shadow-sm">
                       <div className="flex items-center space-x-3">
                         <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
                           tx.type === 'earned' ? 'bg-green-400/20 text-green-400' : 'bg-red-400/20 text-red-400'
@@ -218,14 +227,14 @@ export default function Rewards() {
                   <div
                     key={badge.id}
                     onClick={() => setSelectedBadge(badge)}
-                    className={`bg-white/10 backdrop-blur-xl rounded-3xl p-4 border transition-all duration-300 transform hover:scale-105 ${
+                    className={`bg-white/90 backdrop-blur-xl rounded-3xl p-4 border-2 transition-all duration-300 transform hover:scale-105 ${
                       badge.earned 
-                        ? `border-white/30 ${getRarityGlow(badge.rarity)} shadow-2xl` 
-                        : 'border-white/20 opacity-60'
-                    }`}
+                        ? `border-gray-300 ${getRarityGlow(badge.rarity)} shadow-2xl` 
+                        : 'border-gray-200 opacity-60'
+                    } shadow-lg`}
                   >
                     <div className="relative mb-3">
-                      <div className="w-full h-32 relative rounded-2xl overflow-hidden">
+                      <div className="w-full h-32 relative rounded-2xl overflow-hidden border border-gray-200">
                         <Image
                           src={badge.image}
                           alt={badge.name}
@@ -286,7 +295,7 @@ export default function Rewards() {
               </div>
 
               {/* Collection Stats */}
-              <div className="bg-white/10 backdrop-blur-xl rounded-3xl p-6 border border-white/20">
+              <div className="bg-white/80 backdrop-blur-xl rounded-3xl p-6 border border-gray-200 shadow-lg">
                 <h3 className="text-xl font-bold text-gray-900 mb-4">Collection Stats</h3>
                 
                 <div className="grid grid-cols-4 gap-4 text-center">
@@ -314,7 +323,7 @@ export default function Rewards() {
           {/* Badge Detail Modal */}
           {selectedBadge && (
             <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
-              <div className="bg-gradient-to-br from-gray-900 to-black rounded-3xl p-6 max-w-sm w-full border border-white/20">
+              <div className="bg-gradient-to-br from-gray-900 to-black rounded-3xl p-6 max-w-sm w-full border border-gray-200 shadow-lg">
                 <div className="relative mb-4">
                   <div className="w-full h-48 relative rounded-2xl overflow-hidden">
                     <Image

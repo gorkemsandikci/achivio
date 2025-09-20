@@ -2,9 +2,18 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { useState } from 'react';
 import MobileLayout from '../components/MobileLayout';
+import ProtectedRoute from '../components/ProtectedRoute';
 import { useWallet } from '../contexts/WalletContext';
 
 export default function VirtualRoom() {
+  return (
+    <ProtectedRoute>
+      <VirtualRoomContent />
+    </ProtectedRoute>
+  );
+}
+
+function VirtualRoomContent() {
   const { isConnected } = useWallet();
   const [selectedRoom, setSelectedRoom] = useState(1);
   const [placedItems, setPlacedItems] = useState<{id: number, x: number, y: number, item: string}[]>([

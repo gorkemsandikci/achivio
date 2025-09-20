@@ -17,6 +17,89 @@ export default function Wallet() {
     joinDate: 'September 2024'
   };
 
+  // If not connected, show wallet connection page
+  if (!isConnected) {
+    return (
+      <>
+        <Head>
+          <title>Connect Wallet - Achivio</title>
+          <meta name="description" content="Connect your Stacks wallet to start earning rewards" />
+        </Head>
+
+        <MobileLayout>
+          <div className="px-4 pt-4">
+            {/* Header */}
+            <div className="mb-6 text-center">
+              <h1 className="text-3xl font-bold text-gray-900 mb-2">Connect Your Wallet 🔗</h1>
+              <p className="text-gray-600">Connect your Stacks wallet to start earning ACHIV tokens and NFT badges</p>
+            </div>
+
+            {/* Main Connection Card */}
+            <div className="bg-gradient-to-br from-indigo-500 to-purple-600 rounded-3xl p-8 mb-6 relative overflow-hidden text-center">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-16 translate-x-16"></div>
+              <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full translate-y-12 -translate-x-12"></div>
+              
+              <div className="relative z-10">
+                <div className="text-8xl mb-4">🔗</div>
+                <h2 className="text-2xl font-bold text-gray-900 mb-4">Ready to Start?</h2>
+                <p className="text-gray-600 mb-6">
+                  Connect your Stacks wallet to unlock the full Achivio experience
+                </p>
+                
+                <button 
+                  onClick={connectWallet}
+                  className="bg-white text-indigo-600 font-bold py-4 px-8 rounded-2xl hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 text-lg shadow-lg"
+                >
+                  🔗 Connect to Stacks Testnet
+                </button>
+              </div>
+            </div>
+
+            {/* Features Preview */}
+            <div className="grid grid-cols-2 gap-4 mb-6">
+              <div className="bg-white/80 backdrop-blur-xl rounded-2xl p-4 border border-gray-200 shadow-lg text-center">
+                <div className="text-3xl mb-2">🪙</div>
+                <div className="text-gray-900 font-bold">ACHIV Tokens</div>
+                <div className="text-gray-600 text-sm">Earn rewards for habits</div>
+              </div>
+              
+              <div className="bg-white/80 backdrop-blur-xl rounded-2xl p-4 border border-gray-200 shadow-lg text-center">
+                <div className="text-3xl mb-2">🏆</div>
+                <div className="text-gray-900 font-bold">NFT Badges</div>
+                <div className="text-gray-600 text-sm">Collect achievements</div>
+              </div>
+              
+              <div className="bg-white/80 backdrop-blur-xl rounded-2xl p-4 border border-gray-200 shadow-lg text-center">
+                <div className="text-3xl mb-2">🏠</div>
+                <div className="text-gray-900 font-bold">3D Rooms</div>
+                <div className="text-gray-600 text-sm">Customize your space</div>
+              </div>
+              
+              <div className="bg-white/80 backdrop-blur-xl rounded-2xl p-4 border border-gray-200 shadow-lg text-center">
+                <div className="text-3xl mb-2">📊</div>
+                <div className="text-gray-900 font-bold">Progress</div>
+                <div className="text-gray-600 text-sm">Track your journey</div>
+              </div>
+            </div>
+
+            {/* Info Card */}
+            <div className="bg-blue-500/20 border border-blue-400/30 rounded-xl p-4">
+              <div className="flex items-center space-x-2 mb-2">
+                <span className="text-blue-400">ℹ️</span>
+                <span className="text-blue-400 font-semibold">Testnet Connection</span>
+              </div>
+              <p className="text-gray-600 text-sm">
+                This app connects to Stacks Testnet. Make sure your wallet is set to testnet mode. After connecting, you'll be able to earn tokens and mint NFT badges.
+              </p>
+            </div>
+          </div>
+        </MobileLayout>
+      </>
+    );
+  }
+
+  // If connected, show profile page
+
   const achievements = [
     { name: 'First Steps', rarity: 'Common', image: '/assets/images/success_illustration.jpg' },
     { name: 'Week Warrior', rarity: 'Rare', image: '/assets/images/animated_fire_streak_counter.jpg' },
@@ -79,7 +162,7 @@ export default function Wallet() {
 
           {/* Stats Grid */}
           <div className="grid grid-cols-2 gap-4 mb-6">
-            <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-4 border border-white/20">
+            <div className="bg-white/80 backdrop-blur-xl rounded-2xl p-4 border border-gray-200 shadow-lg">
               <div className="text-center">
                 <div className="text-3xl mb-2">🔥</div>
                 <div className="text-2xl font-bold text-gray-900">{userStats.streak}</div>
@@ -87,7 +170,7 @@ export default function Wallet() {
               </div>
             </div>
             
-            <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-4 border border-white/20">
+            <div className="bg-white/80 backdrop-blur-xl rounded-2xl p-4 border border-gray-200 shadow-lg">
               <div className="text-center">
                 <div className="text-3xl mb-2">✅</div>
                 <div className="text-2xl font-bold text-gray-900">{userStats.totalTasks}</div>
@@ -95,7 +178,7 @@ export default function Wallet() {
               </div>
             </div>
             
-            <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-4 border border-white/20">
+            <div className="bg-white/80 backdrop-blur-xl rounded-2xl p-4 border border-gray-200 shadow-lg">
               <div className="text-center">
                 <div className="text-3xl mb-2">🏆</div>
                 <div className="text-2xl font-bold text-gray-900">{userStats.badges}</div>
@@ -103,7 +186,7 @@ export default function Wallet() {
               </div>
             </div>
             
-            <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-4 border border-white/20">
+            <div className="bg-white/80 backdrop-blur-xl rounded-2xl p-4 border border-gray-200 shadow-lg">
               <div className="text-center">
                 <div className="text-3xl mb-2">⭐</div>
                 <div className="text-2xl font-bold text-gray-900">{userStats.level}</div>
@@ -113,7 +196,7 @@ export default function Wallet() {
           </div>
 
           {/* Wallet Connection */}
-          <div className="bg-white/10 backdrop-blur-xl rounded-3xl p-6 mb-6 border border-white/20">
+          <div className="bg-white/80 backdrop-blur-xl rounded-3xl p-6 mb-6 border border-gray-200 shadow-lg">
             <h3 className="text-xl font-bold text-gray-900 mb-4">🔗 Wallet Connection</h3>
             
             {isConnected ? (
@@ -129,11 +212,11 @@ export default function Wallet() {
                 </div>
                 
                 <div className="grid grid-cols-2 gap-4 mb-4">
-                  <div className="bg-white/5 rounded-2xl p-4 text-center">
+                  <div className="bg-white/60 rounded-2xl p-4 text-center border border-gray-100 shadow-sm">
                     <div className="text-lg font-bold text-green-400">24.5</div>
                     <div className="text-gray-500 text-sm">ACHIV Tokens</div>
                   </div>
-                  <div className="bg-white/5 rounded-2xl p-4 text-center">
+                  <div className="bg-white/60 rounded-2xl p-4 text-center border border-gray-100 shadow-sm">
                     <div className="text-lg font-bold text-purple-400">4</div>
                     <div className="text-gray-500 text-sm">NFT Badges</div>
                   </div>
@@ -177,13 +260,13 @@ export default function Wallet() {
           </div>
 
           {/* Achievement Preview */}
-          <div className="bg-white/10 backdrop-blur-xl rounded-3xl p-6 mb-6 border border-white/20">
+          <div className="bg-white/80 backdrop-blur-xl rounded-3xl p-6 mb-6 border border-gray-200 shadow-lg">
             <h3 className="text-xl font-bold text-gray-900 mb-4">🏆 Recent Achievements</h3>
             
             <div className="grid grid-cols-4 gap-3">
               {achievements.map((achievement, index) => (
                 <div key={index} className="relative">
-                  <div className={`w-full aspect-square rounded-2xl overflow-hidden ${
+                  <div className={`w-full aspect-square rounded-2xl overflow-hidden border-2 border-gray-200 shadow-lg ${
                     achievement.locked ? 'opacity-30' : ''
                   }`}>
                     <Image
@@ -204,26 +287,26 @@ export default function Wallet() {
           </div>
 
           {/* Settings */}
-          <div className="bg-white/10 backdrop-blur-xl rounded-3xl p-6 border border-white/20">
+          <div className="bg-white/80 backdrop-blur-xl rounded-3xl p-6 border border-gray-200 shadow-lg">
             <h3 className="text-xl font-bold text-gray-900 mb-4">⚙️ Settings</h3>
             
             <div className="space-y-3">
-              <button className="w-full flex items-center justify-between p-4 bg-white/5 rounded-2xl text-gray-900 hover:bg-white/10 transition-all duration-300">
+              <button className="w-full flex items-center justify-between p-4 bg-white/60 rounded-2xl text-gray-900 border border-gray-100 shadow-sm hover:bg-white/80 hover:shadow-md transition-all duration-300">
                 <span>🔔 Notifications</span>
                 <span className="text-gray-500">→</span>
               </button>
               
-              <button className="w-full flex items-center justify-between p-4 bg-white/5 rounded-2xl text-gray-900 hover:bg-white/10 transition-all duration-300">
+              <button className="w-full flex items-center justify-between p-4 bg-white/60 rounded-2xl text-gray-900 border border-gray-100 shadow-sm hover:bg-white/80 hover:shadow-md transition-all duration-300">
                 <span>🎨 Theme</span>
                 <span className="text-gray-500">→</span>
               </button>
               
-              <button className="w-full flex items-center justify-between p-4 bg-white/5 rounded-2xl text-gray-900 hover:bg-white/10 transition-all duration-300">
+              <button className="w-full flex items-center justify-between p-4 bg-white/60 rounded-2xl text-gray-900 border border-gray-100 shadow-sm hover:bg-white/80 hover:shadow-md transition-all duration-300">
                 <span>📊 Export Data</span>
                 <span className="text-gray-500">→</span>
               </button>
               
-              <button className="w-full flex items-center justify-between p-4 bg-white/5 rounded-2xl text-gray-900 hover:bg-white/10 transition-all duration-300">
+              <button className="w-full flex items-center justify-between p-4 bg-white/60 rounded-2xl text-gray-900 border border-gray-100 shadow-sm hover:bg-white/80 hover:shadow-md transition-all duration-300">
                 <span>❓ Help & Support</span>
                 <span className="text-gray-500">→</span>
               </button>
