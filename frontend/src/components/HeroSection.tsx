@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const HeroSection: React.FC = () => {
   return (
@@ -65,13 +66,13 @@ const HeroSection: React.FC = () => {
         
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-8 rounded-lg text-lg transition-all duration-300 shadow-md">
+          <Link href="/wallet" className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-8 rounded-full text-lg transition-all duration-300 shadow-md text-center">
             Start Your Journey 🚀
-          </button>
+          </Link>
           
-          <button className="bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-4 px-8 rounded-lg text-lg transition-all duration-300 border border-gray-200">
+          <Link href="/wallet" className="bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-4 px-8 rounded-full text-lg transition-all duration-300 border border-gray-200 text-center">
             View Demo 📱
-          </button>
+          </Link>
         </div>
         
         {/* Stats Preview */}
