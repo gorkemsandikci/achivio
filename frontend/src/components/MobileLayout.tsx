@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { useWallet } from '../contexts/WalletContext';
+import AnimatedBackground from './AnimatedBackground';
 
 interface MobileLayoutProps {
   children: React.ReactNode;
@@ -53,14 +54,14 @@ const MobileLayout: React.FC<MobileLayoutProps> = ({ children }) => {
   };
 
       return (
-        <div className="h-full bg-gray-50 relative flex flex-col">
-          {/* Subtle Background Pattern */}
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-white to-gray-100 opacity-50"></div>
+        <div className="h-full relative flex flex-col overflow-hidden">
+          {/* Animated VR Background */}
+          <div className="absolute inset-0">
+            <AnimatedBackground />
           </div>
 
       {/* Main Content Area - Scrollable */}
-      <div className={`flex-1 overflow-y-auto transition-all duration-300 ${isTransitioning ? 'opacity-50 scale-95' : 'opacity-100 scale-100'}`}>
+      <div className={`flex-1 overflow-y-auto transition-all duration-300 relative z-10 ${isTransitioning ? 'opacity-50 scale-95' : 'opacity-100 scale-100'}`}>
         {children}
       </div>
 
@@ -68,15 +69,15 @@ const MobileLayout: React.FC<MobileLayoutProps> = ({ children }) => {
       <div className="flex-shrink-0 z-50">
         {/* Active Tab Indicator - Outside navigation */}
         <div 
-          className="absolute -top-1 h-1 bg-blue-500 rounded-full transition-all duration-700 ease-out z-10"
+          className="absolute -top-1 h-1 bg-gradient-to-r from-purple-500 to-cyan-400 rounded-full transition-all duration-700 ease-out z-10"
           style={{
             left: `${(navItems.findIndex(item => item.id === activeTab) * 20)}%`,
             width: '20%'
           }}
         />
         
-        {/* Clean Background */}
-        <div className="bg-white border-t border-gray-200 shadow-lg">
+        {/* VR Theme Background */}
+        <div className="bg-black/80 backdrop-blur-lg border-t border-purple-500/20 shadow-lg">
           <div className="px-2 py-3">
             <div className="flex justify-around items-center relative">
               
@@ -86,14 +87,14 @@ const MobileLayout: React.FC<MobileLayoutProps> = ({ children }) => {
                       onClick={() => handleTabChange(item.id)}
                       className={`flex flex-col items-center py-2 px-3 rounded-2xl transition-all duration-700 transform ${
                         activeTab === item.id
-                          ? 'scale-105 bg-blue-50 text-blue-600 shadow-sm'
-                          : 'scale-100 text-gray-500 hover:text-gray-700 hover:scale-105'
+                          ? 'scale-105 bg-purple-500/20 text-cyan-400 shadow-sm'
+                          : 'scale-100 text-gray-400 hover:text-white hover:scale-105'
                       }`}
                     >
                       <div className={`text-2xl mb-1 transition-all duration-500 ${activeTab === item.id ? 'animate-bounce' : ''}`}>
                         {item.icon}
                       </div>
-                      <span className={`text-xs font-medium ${activeTab === item.id ? 'text-blue-600' : 'text-gray-500'}`}>
+                      <span className={`text-xs font-medium ${activeTab === item.id ? 'text-cyan-400' : 'text-gray-400'}`}>
                         {item.label}
                       </span>
                     </button>

@@ -131,8 +131,8 @@ function RewardsContent() {
         <div className="px-4 pt-4">
           {/* Header */}
           <div className="mb-6">
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">Rewards 💎</h1>
-            <p className="text-gray-600">Your earned tokens and achievement badges</p>
+            <h1 className="text-3xl font-bold text-white mb-2">Rewards 💎</h1>
+            <p className="text-blue-200">Your earned tokens and achievement badges</p>
           </div>
 
           {/* Tab Selector */}
@@ -170,8 +170,8 @@ function RewardsContent() {
                   <div className="flex items-center justify-between mb-4">
                     <div>
                       <p className="text-gray-600 text-sm">Total Balance</p>
-                      <h2 className="text-4xl font-bold text-gray-900">{tokenStats.balance}</h2>
-                      <p className="text-gray-900/90">ACHIV Tokens</p>
+                      <h2 className="text-4xl font-bold text-white">{tokenStats.balance}</h2>
+                      <p className="text-white/90">ACHIV Tokens</p>
                     </div>
                     <div className="w-16 h-16 relative">
                       <Image
@@ -185,16 +185,16 @@ function RewardsContent() {
                   
                   <div className="grid grid-cols-3 gap-4 mt-6">
                     <div className="text-center">
-                      <div className="text-gray-900 text-lg font-bold">+{tokenStats.todayEarned}</div>
-                      <div className="text-gray-600 text-xs">Today</div>
+                      <div className="text-white text-lg font-bold">+{tokenStats.todayEarned}</div>
+                      <div className="text-blue-200 text-xs">Today</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-gray-900 text-lg font-bold">+{tokenStats.weeklyEarned}</div>
-                      <div className="text-gray-600 text-xs">This Week</div>
+                      <div className="text-white text-lg font-bold">+{tokenStats.weeklyEarned}</div>
+                      <div className="text-blue-200 text-xs">This Week</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-gray-900 text-lg font-bold">{tokenStats.totalEarned}</div>
-                      <div className="text-gray-600 text-xs">All Time</div>
+                      <div className="text-white text-lg font-bold">{tokenStats.totalEarned}</div>
+                      <div className="text-blue-200 text-xs">All Time</div>
                     </div>
                   </div>
                 </div>
@@ -202,7 +202,7 @@ function RewardsContent() {
 
               {/* Recent Transactions */}
               <div className="bg-white/80 backdrop-blur-xl rounded-3xl p-6 border border-gray-200 shadow-lg">
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Recent Activity</h3>
+                <h3 className="text-xl font-bold text-white mb-4">Recent Activity</h3>
                 
                 <div className="space-y-3">
                   {recentTransactions.map((tx, index) => (

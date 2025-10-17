@@ -121,8 +121,8 @@ function VirtualRoomContent() {
         <div className="mb-8">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
             <div>
-              <h1 className="text-4xl font-bold text-gray-900 mb-2">🏠 Virtual Room</h1>
-              <p className="text-gray-600">Customize your workspace with earned furniture and decorations</p>
+              <h1 className="text-4xl font-bold text-white mb-2">🏠 Virtual Room</h1>
+              <p className="text-blue-200">Customize your workspace with earned furniture and decorations</p>
             </div>
             
             <div className="mt-4 md:mt-0 flex items-center space-x-4">
@@ -173,7 +173,7 @@ function VirtualRoomContent() {
 
         {/* Current Room Display with Interactive Items */}
         <div className="mb-8">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Your 3D Room</h2>
+          <h2 className="text-2xl font-semibold text-white mb-4">Your 3D Room</h2>
           <div className="bg-white/10 backdrop-blur-xl rounded-2xl shadow-xl overflow-hidden border border-white/20">
             <div className="relative h-96">
               <Image
@@ -230,7 +230,7 @@ function VirtualRoomContent() {
 
         {/* NFT Items Inventory */}
         <div className="mb-8">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">🎒 Your NFT Items</h2>
+          <h2 className="text-2xl font-semibold text-white mb-4">🎒 Your NFT Items</h2>
           <div className="grid grid-cols-2 gap-4">
             {nftItems.map((item) => (
               <div
@@ -257,8 +257,8 @@ function VirtualRoomContent() {
                   </div>
                 </div>
                 
-                <h3 className="text-gray-900 font-bold text-sm mb-1">{item.name}</h3>
-                <p className="text-gray-500 text-xs mb-3">{item.description}</p>
+                <h3 className="text-white font-bold text-sm mb-1">{item.name}</h3>
+                <p className="text-blue-200 text-xs mb-3">{item.description}</p>
                 
                 {item.unlocked && (
                   <button
