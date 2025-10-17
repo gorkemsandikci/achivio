@@ -256,8 +256,8 @@ export default function Tasks() {
           <div className="px-4 pt-4">
           {/* Header */}
           <div className="mb-6">
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">Daily Quests 🎯</h1>
-            <p className="text-gray-600">Complete tasks to earn ACHIV tokens and XP</p>
+            <h1 className="text-3xl font-bold text-white mb-2">Daily Quests 🎯</h1>
+            <p className="text-blue-200">Complete tasks to earn ACHIV tokens and XP</p>
           </div>
 
           {/* Category Filter */}
@@ -328,7 +328,7 @@ export default function Tasks() {
                     {/* Task Details */}
                     <div className="flex-1">
                       <div className="flex items-center justify-between mb-2">
-                        <h3 className="text-lg font-bold text-gray-900">
+                        <h3 className="text-lg font-bold text-white">
                           {task.title}
                         </h3>
                           <div className="flex items-center space-x-2">
@@ -418,7 +418,7 @@ export default function Tasks() {
 
           {/* Add New Task Button */}
           <div className="mt-8 pb-6">
-            <button className="w-full bg-gradient-to-r from-indigo-500 to-purple-600 text-gray-900 py-4 rounded-2xl font-bold text-lg hover:from-indigo-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105">
+            <button className="w-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-4 rounded-2xl font-bold text-lg hover:from-indigo-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105">
               ➕ Create Custom Task
             </button>
           </div>

@@ -268,8 +268,8 @@ const GameDashboard: React.FC = () => {
       {/* Daily Progress Ring */}
       <div className="bg-white/80 backdrop-blur-xl rounded-3xl p-6 mb-6 border border-gray-200 shadow-lg">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-xl font-bold text-gray-900">Today's Progress</h2>
-          <span className="text-gray-600 text-sm">{Math.round(progressPercentage)}% Complete</span>
+          <h2 className="text-xl font-bold text-white">Today's Progress</h2>
+          <span className="text-blue-200 text-sm">{Math.round(progressPercentage)}% Complete</span>
         </div>
         
         <div className="flex items-center justify-center mb-4">
@@ -306,8 +306,8 @@ const GameDashboard: React.FC = () => {
             {/* Center Content */}
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="text-center">
-                <div className="text-2xl font-bold text-gray-900">{todayCompletedTasks}</div>
-                <div className="text-xs text-gray-600">of {activeTasks}</div>
+                <div className="text-2xl font-bold text-white">{todayCompletedTasks}</div>
+                <div className="text-xs text-blue-200">of {activeTasks}</div>
               </div>
             </div>
           </div>
@@ -316,7 +316,7 @@ const GameDashboard: React.FC = () => {
 
       {/* Daily Tasks */}
       <div className="space-y-3">
-        <h2 className="text-xl font-bold text-gray-900 mb-4">Today's Quests</h2>
+        <h2 className="text-xl font-bold text-white mb-4">Today's Quests</h2>
         
         {userTasks.slice(0, 4).map((userTask) => {
           const task = userTask.tasks;
@@ -347,7 +347,7 @@ const GameDashboard: React.FC = () => {
               {/* Task Info */}
               <div className="flex-1">
                 <div className="flex items-center justify-between mb-1">
-                  <h3 className={`font-semibold ${isCompletedToday ? 'text-gray-500 line-through' : 'text-gray-900'}`}>
+                  <h3 className={`font-semibold ${isCompletedToday ? 'text-gray-400 line-through' : 'text-white'}`}>
                     {task.title}
                   </h3>
                   {!isCompletedToday && (

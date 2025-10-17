@@ -33,8 +33,8 @@ export default function Wallet() {
           <div className="px-4 pt-4">
             {/* Header */}
             <div className="mb-6 text-center">
-              <h1 className="text-3xl font-bold text-gray-900 mb-2">Connect Your Wallet 🔗</h1>
-              <p className="text-gray-600">Connect your Stacks wallet to start earning ACHIV tokens and NFT badges</p>
+              <h1 className="text-3xl font-bold text-white mb-2">Connect Your Wallet 🔗</h1>
+              <p className="text-blue-200">Connect your Stacks wallet to start earning ACHIV tokens and NFT badges</p>
             </div>
 
             {/* Main Connection Card */}
@@ -44,8 +44,8 @@ export default function Wallet() {
               
               <div className="relative z-10">
                 <div className="text-8xl mb-4">🔗</div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">Ready to Start?</h2>
-                <p className="text-gray-600 mb-6">
+                <h2 className="text-2xl font-bold text-white mb-4">Ready to Start?</h2>
+                <p className="text-blue-200 mb-6">
                   Connect your Stacks wallet to unlock the full Achivio experience
                 </p>
                 
@@ -122,8 +122,8 @@ export default function Wallet() {
         <div className="px-4 pt-4">
           {/* Header */}
           <div className="mb-6">
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">Profile 👤</h1>
-            <p className="text-gray-600">Manage your account and wallet connection</p>
+            <h1 className="text-3xl font-bold text-white mb-2">Profile 👤</h1>
+            <p className="text-blue-200">Manage your account and wallet connection</p>
           </div>
 
           {/* Profile Card */}
@@ -142,8 +142,8 @@ export default function Wallet() {
                   />
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-900">Habit Master</h2>
-                  <p className="text-gray-600">Level {userStats.level} Achiever</p>
+                  <h2 className="text-2xl font-bold text-white">Habit Master</h2>
+                  <p className="text-blue-200">Level {userStats.level} Achiever</p>
                   <p className="text-gray-500 text-sm">Joined {userStats.joinDate}</p>
                 </div>
               </div>
