@@ -14,7 +14,7 @@ assets/
     ├── app_store_screenshots.jpg          # Mobile app previews
     ├── dashboard_mockup.jpg               # Main dashboard UI
     ├── leaderboard_interface.jpg          # Social competition UI
-    ├── main_hero.jpg                      # Primary hero image
+    ├── main_hero.png                      # Primary hero image
     ├── milestone_celebration.jpg          # Milestone rewards
     ├── progress_charts.jpg                # Analytics visualization
     ├── promotional_banner.jpg             # Marketing materials
@@ -29,7 +29,7 @@ assets/
 
 ### 1. Brand & Identity
 
-#### **main_hero.jpg**
+#### **main_hero.png**
 - **Purpose**: Primary hero image for landing pages and marketing
 - **Dimensions**: High resolution (suitable for hero sections)
 - **Usage**: Homepage header, marketing materials, presentations
@@ -153,7 +153,7 @@ import Image from 'next/image';
 // Hero section with background
 <div className="relative">
   <Image
-    src="/assets/images/main_hero.jpg"
+    src="/assets/images/main_hero.png"
     alt="Achivio Hero"
     fill
     className="object-cover opacity-20"
@@ -185,7 +185,7 @@ import Image from 'next/image';
 /* Hero background with gradient overlay */
 .hero-background {
   background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)),
-              url('/assets/images/main_hero.jpg');
+              url('/assets/images/main_hero.png');
   background-size: cover;
   background-position: center;
 }
@@ -239,7 +239,7 @@ const imageProps = {
 
 // Priority loading for above-the-fold images
 <Image
-  src="/assets/images/main_hero.jpg"
+  src="/assets/images/main_hero.png"
   alt="Hero"
   priority
   fill

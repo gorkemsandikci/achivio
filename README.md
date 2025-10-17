@@ -1,6 +1,6 @@
 # Achivio - Blockchain Habit Tracker 🎯
 
-![Achivio Hero](frontend/public/assets/images/main_hero.jpg)
+![Achivio Hero](frontend/public/assets/images/main_hero.png)
 
 > **Motivational habit tracking meets blockchain rewards and NFT achievements**
 

@@ -71,7 +71,7 @@ const Dashboard: React.FC = () => {
       </div>
 
       {/* Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
         {/* Streak Counter */}
         <div className="bg-white rounded-xl shadow-lg p-6 border border-orange-200">
           <div className="flex items-center justify-between mb-4">
@@ -125,8 +125,8 @@ const Dashboard: React.FC = () => {
           </div>
         </div>
 
-        {/* Progress Overview */}
-        <div className="bg-white rounded-xl shadow-lg p-6 border border-blue-200">
+        {/* Progress Overview - Temporarily commented out */}
+        {/* <div className="bg-white rounded-xl shadow-lg p-6 border border-blue-200">
           <h3 className="text-lg font-semibold text-gray-800 mb-4">Today's Progress</h3>
           <div className="space-y-3">
             <div className="flex justify-between items-center">
@@ -138,7 +138,7 @@ const Dashboard: React.FC = () => {
             </div>
             <div className="text-sm text-gray-600">2 more tasks to complete daily goal</div>
           </div>
-        </div>
+        </div> */}
       </div>
 
       {/* Progress Charts Section */}
