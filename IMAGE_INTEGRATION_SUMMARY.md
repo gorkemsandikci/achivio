@@ -7,7 +7,7 @@ I have successfully integrated all 16 uploaded images into the Achivio blockchai
 ## 📁 **Images Integrated**
 
 ### **Brand & Identity Images**
-- ✅ **`main_hero.jpg`** - Integrated into HeroSection component and README
+- ✅ **`main_hero.png`** - Integrated into HeroSection component and README
 - ✅ **`3d_rendered_crypto_tokens.jpg`** - Used throughout for ACHIV token displays
 - ✅ **`promotional_banner.jpg`** - Added to README marketing section
 
@@ -35,7 +35,7 @@ I have successfully integrated all 16 uploaded images into the Achivio blockchai
 ## 🏗️ **Frontend Components Created**
 
 ### **1. HeroSection.tsx**
-- **Hero Background**: Uses `main_hero.jpg` as primary background
+- **Hero Background**: Uses `main_hero.png` as primary background
 - **Token Display**: Features `3d_rendered_crypto_tokens.jpg` prominently
 - **Feature Highlights**: Showcases streak counter, badges, and virtual rooms
 - **Responsive Design**: Optimized for all screen sizes
@@ -155,7 +155,7 @@ I have successfully integrated all 16 uploaded images into the Achivio blockchai
 frontend/
 ├── src/
 │   ├── components/
-│   │   ├── HeroSection.tsx      (main_hero.jpg, tokens.jpg)
+│   │   ├── HeroSection.tsx      (main_hero.png, tokens.jpg)
 │   │   ├── Dashboard.tsx        (dashboard_mockup.jpg, progress_charts.jpg)
 │   │   ├── VirtualRoom.tsx      (room_preview_1-3.jpg)
 │   │   ├── Leaderboard.tsx      (leaderboard_interface.jpg)
